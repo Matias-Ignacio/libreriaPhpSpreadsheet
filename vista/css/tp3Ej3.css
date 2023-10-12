@@ -1,0 +1,47 @@
+.presentacionPelicula{
+    display: flex;
+    flex-direction: row;
+}
+.pelicula{
+    flex-grow: 3;
+}
+
+.imagen{
+    flex-grow: 1;
+}
+
+.container{
+    background-color:aqua;
+
+}
+
+.titulo{
+    color:green;
+    font-weight:bolder
+}
+img{
+    height:70%; 
+}
+
+.datosCine{
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    color: green;
+    font-size: 1.3rem;
+}
+
+.caracteristicas{
+    color: green;
+    font-size: 1.3rem;
+}
+
+#volver{
+    font-size: 1.3rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: blue;
+}
+
+#volver:hover{
+    color:rgb(5, 4, 68);
+}
+

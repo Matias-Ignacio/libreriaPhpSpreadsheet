@@ -1,0 +1,41 @@
+.formField{
+    margin: 0.1rem;
+    padding: 0.2rem;
+}
+
+label{
+    display:inline-block;
+    width:10%;
+    font-size: 1.2rem;
+}
+
+input[type=submit]{
+    display:inline-block;
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: antiquewhite;
+    margin-bottom: 2rem;
+}
+
+#enviar:hover{
+    background-color: aqua;
+}
+
+/*accion ej3*/
+.container{
+    background-color: beige;
+}
+.titulo-tp1-ej3{
+    color: blue;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+
+#volver-tp1-ej3{
+    display: block;
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: aquamarine;
+    font-weight: bolder;
+    width: 4%;
+}

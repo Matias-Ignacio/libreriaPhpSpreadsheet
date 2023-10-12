@@ -1,0 +1,30 @@
+.contenedor{
+    background-color:azure;
+    font-size:1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+#mostrar{
+    font-size:1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+    color:rgb(10, 78, 56);
+
+}
+#mostrar:hover{
+    color:green;
+}
+
+#error{
+    color:red; 
+}
+
+#volver{
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(9, 75, 75);
+}
+
+#volver:hover{
+    color:green; 
+}

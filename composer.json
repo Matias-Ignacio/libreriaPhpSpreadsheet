@@ -1,0 +1,20 @@
+{
+    "name": "grupo5/utillib",
+    "description": "Aprendiendo a usar librerias",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Grupo5\\Utillib\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Matias-Ignacio",
+            "email": "matias.riveiro@fi.uncoma.edu.ar"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.29"
+    }
+}

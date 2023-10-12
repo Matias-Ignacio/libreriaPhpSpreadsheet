@@ -1,0 +1,46 @@
+.form-control{
+    margin-bottom: 1.5rem;
+}
+label{
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container{
+    margin-bottom: 5rem;
+}
+
+input[type=submit], input[type=button]{
+    font-size: 1.1rem;
+    color: blue;
+
+}
+input[type=submit]:hover{
+    background-color: aqua;
+} 
+input[type=button]:hover{
+    background-color: aqua;
+}
+
+/*accion*/
+.contenedor{
+    background-color: antiquewhite;
+}
+
+.titulo{
+    font-family:'Times New Roman', Times, serif;
+    color:blue
+}
+
+.precio p{
+    font-size: 1.3rem;
+}
+
+#volver{
+    font-size: 1.3rem;
+    color: blue;
+}
+
+#volver:hover{
+    color:green; 
+}

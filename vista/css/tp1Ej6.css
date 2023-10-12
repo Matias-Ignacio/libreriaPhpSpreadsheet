@@ -1,0 +1,53 @@
+label{
+    display:inline-block;
+    font-family: 'Times New Roman', Times, serif;
+    font-size:1.1rem;
+    width: 5rem;
+    margin-bottom: 0.7rem;
+}
+
+input[type=radio]{
+    width:2rem;
+}
+
+#deportes label{
+    width:4rem;
+}
+
+#tipoEstudio label{
+    width: 10rem;
+
+}
+
+#enviar{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+    background-color: antiquewhite;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/*accion*/
+.titulo, .deporte{
+    font-family: 'Times New Roman', Times, serif;
+    color: blue;
+}
+
+#volver-tp1-ej6{
+    margin-top: 3rem;
+    display: block;
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+#volver-tp1-ej6:hover{
+    color:green; 
+    font-weight: bolder;
+}
+#cantDeportes{
+    font-size: 1.7rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+

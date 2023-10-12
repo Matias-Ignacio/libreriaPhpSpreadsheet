@@ -1,0 +1,15 @@
+#principal{
+    margin-top:2rem;
+    margin-bottom: 5rem;
+}
+
+/*accion*/
+#volver{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+    color:blue;
+}
+
+#volver:hover{
+    color: green;
+}

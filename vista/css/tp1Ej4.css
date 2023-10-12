@@ -1,0 +1,42 @@
+label{
+    display:inline-block;
+    margin-bottom: 0.5rem;
+    width:10%;
+    font-size: 1.2rem;;
+
+}
+input[type=submit]{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color:azure;
+    font-size: 1.2rem;
+}
+
+#enviar:hover{
+    background-color: aqua;
+}
+
+.container{
+    margin-bottom: 3rem;
+    background-color: beige;
+}
+
+/*accion */
+.contenedor{
+    background-color: beige;
+}
+
+.titulo{
+    color: blue;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+
+#volver-tp1-ej4{
+    display: block;
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: aquamarine;
+    font-weight: bolder;
+    width: 4%;
+}

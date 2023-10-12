@@ -1,0 +1,31 @@
+#principal{
+    margin-bottom: 10rem;
+}
+
+/*accion*/
+.titulo{
+    font-family: 'Times New Roman', Times, serif;
+    color:blue;
+}
+
+.info{
+    font-size: 1.3rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#error{
+    color: red;
+    font-size: 1.3rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#volver{
+    font-size: 1.2rem;
+    color:blue;
+    font-weight: bolder;
+
+}
+
+#volver:hover{
+    color: green;
+}

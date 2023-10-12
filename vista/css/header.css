@@ -1,0 +1,8 @@
+.drop-down02{
+    position: relative;
+}
+.drop-down02 .sub-menu02{
+    position:absolute;
+    left: 100%;
+    top:0; 
+}

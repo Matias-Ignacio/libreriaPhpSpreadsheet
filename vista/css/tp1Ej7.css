@@ -1,0 +1,35 @@
+label{
+    width:10rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+#operacion{
+    font-size: 1.2rem;
+}
+
+#enviar{
+    display: block;
+    font-size: 1.2rem;
+    background-color: aqua;
+    margin-bottom: 3rem;
+    margin-top: 1.8rem;
+}
+
+#enviar:hover{
+    background-color:bisque;
+}
+
+/*accion*/
+.contenedor{
+    background-color: beige;
+}
+
+p{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+}
+
+#volver{
+    font-size: 1.9rem;
+    color: blue;
+}
