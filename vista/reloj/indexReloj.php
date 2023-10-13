@@ -11,7 +11,7 @@ $listaReloj = $objAbmReloj->buscar(null);
   <h2 style="text-align: center; color:dodgerblue;">Tabla Reloj</h2>
   <h5 style="text-align: left; color:dodgerblue;">Relojess disponibles</h5>            
   <form action="editarReloj.php" method="post">
-    <table>
+    <table class="table-striped">
         <tr>
             <th style="width:10%">Id</th>
             <th style="width:50%">Nombre del Reloj</th>

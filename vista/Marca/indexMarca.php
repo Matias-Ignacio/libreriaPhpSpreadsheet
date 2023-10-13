@@ -10,7 +10,7 @@ $listaMarca = $objAbmMarca->buscar(null);
   <h2 style="text-align: center; color:dodgerblue;">Tabla Marcas</h2>
   <h5 style="text-align: left; color:dodgerblue;">Marcas disponibles</h5>    
   <form action="editarMarca.php" method="post">
-    <table>
+    <table class="table-striped">
         <tr>
             <th style="width:30%">Id</th>
             <th style="width:70%">Nombre de la Marca</th>

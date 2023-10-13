@@ -90,8 +90,36 @@ INSERT INTO `tipo` (`idTipo`, `nombreTipo`) VALUES
 (2, 'moda'),
 (3, 'clasico'),
 (4, 'sport'),
-(5, 'lujo'),
+(5, 'casual'),
 (6, 'smart');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `venta`
+--
+
+CREATE TABLE `venta` (
+  `idVenta` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `idReloj` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `venta`
+--
+
+INSERT INTO `venta` (`idVenta`, `fecha`, `idReloj`, `cantidad`) VALUES
+(1, '2023-10-10', 4, 3),
+(2, '2023-10-10',  2, 6),
+(3, '2023-10-11', 5, 1),
+(4, '2023-10-12', 6, 5),
+(5, '2023-10-13', 1, 4),
+(6, '2023-10-09', 5, 2);
+
+-- --------------------------------------------------------
+
 
 --
 -- Índices para tablas volcadas
@@ -117,6 +145,12 @@ ALTER TABLE `reloj`
 ALTER TABLE `tipo`
   ADD PRIMARY KEY (`idTipo`);
 
+-- Indices de la tabla `venta`
+--
+ALTER TABLE `venta`
+  ADD PRIMARY KEY (`idVenta`),
+  ADD KEY `idReloj` (`idReloj`);  
+
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
@@ -139,6 +173,10 @@ ALTER TABLE `reloj`
 ALTER TABLE `tipo`
   MODIFY `idTipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
+-- AUTO_INCREMENT de la tabla `venta`
+--
+ALTER TABLE `venta`
+  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Restricciones para tablas volcadas
 --
@@ -149,7 +187,11 @@ ALTER TABLE `tipo`
 ALTER TABLE `reloj`
   ADD CONSTRAINT `reloj_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `tipo` (`idTipo`),
   ADD CONSTRAINT `reloj_ibfk_2` FOREIGN KEY (`idMarca`) REFERENCES `marca` (`idMarca`);
-COMMIT;
+
+-- Filtros para la tabla `venta`
+--
+ALTER TABLE `venta`
+  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`idReloj`) REFERENCES `reloj` (`idReloj`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
