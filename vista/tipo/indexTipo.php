@@ -21,11 +21,10 @@ $listaTipo = $objAbmTipo->buscar(null);
             <?php if(count($listaTipo)>0){
                 foreach($listaTipo as $tipo){?>
                     <tr>
-                    <td><input type="hidden" name="idTipo" id="idTipo" value="<?php echo($tipo->getidtipo()) ?>"> <?php echo($tipo->getidtipo()) ?> </td>
-                    <td><input type="hidden" name="nombreTipo" id="nombreTipo" value="<?php echo($tipo->getnombretipo()) ?>"> <?php echo($tipo->getnombretipo())?></td>
-                    <td><input type="submit" name="accion" id="editar" value="editar"></td>
-                    <td><input type="submit" name="accion" id="borrar" value="borrar"></td>
-                    
+                    <td> <?php echo($tipo->getidtipo()) ?> </td>
+                    <td> <?php echo($tipo->getnombretipo())?></td>
+                    <td><a href="editarTipo.php?idTipo=<?php echo($tipo->getidtipo()) ?>" >Editar</a></td>
+                    <td><a href="editarTipo.php?idTipo=<?php echo($tipo->getidtipo()) ?>" >Borrar</a></td>
                     
                     </tr>
                 <?php    

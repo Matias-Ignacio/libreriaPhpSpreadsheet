@@ -5,7 +5,6 @@ include_once '../estructura/header.php';
 $objTipo=new AbmTipo();
 $datos=data_submitted();
 var_dump($datos);
-echo($datos['accion']);
 $obj=null; 
 if(isset($datos['idTipo'])){
     $listaTipo=$objTipo->buscar($datos);
@@ -20,11 +19,12 @@ if(isset($datos['idTipo'])){
     <div class="container">
         <form action="accionTipo.php" method="post">
             <label for="id">ID</label>
-            <input type="number" name="idTipo" id="idTipo" readonly value="<?php echo($obj->getidTipo()) ?>">
+            <input type="number" name="idTipo" id="idTipo" readonly value="<?php echo($obj->getidTipo()) ?>"><br>
             <label for="nombreTipo"> Nombre del Tipo de Reloj</label>
-            <input type="text" name="nombreTipo" id="nombreTipo" value="<?php echo($obj->getnombreTipo()) ?>">
-            <input type="hidden" name="accion" id="accion" value="<?php echo(($datos['accion']=='borrar') ?  "borrar" : "editar") ?>">
-            <input type="submit" value="<?php echo(($datos['accion']=='borrar') ?  "borrar" : "editar") ?>">
+            <input type="text" name="nombreTipo" id="nombreTipo" value="<?php echo($obj->getnombreTipo()) ?>"><br>
+            <input type="submit" value="Borrar">
+            
+            <input type="submit" name="accion" id="editar" value="editar">
         </form>
     
 <?php } else{

@@ -5,6 +5,7 @@
     include '../funciones/crearHC.php';
   
     $datos =data_submitted();
+    var_dump($datos);
     $resp=false; 
     $objTipo=new AbmTipo();
     $listaObj = $objTipo->buscar(null);
