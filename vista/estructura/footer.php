@@ -7,18 +7,6 @@
   </div>
 
 
-<footer>
-    <div class="container mt-5 bg-info fs-4">
-        <div class="row">
-            Integrantes:
-            <div class="col">Matias Rivero</div>
-            <div class="col">Alexis Casimiro</div>
-            <div class="col">Francisco Insua</div>
-            <div class="col">Juan Pablo Urra</div>
-        </div>
-    </div>
-
-</footer>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -31,5 +19,17 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
   </script>
 </body>
+<footer>
+    <div class="container mt-5 bg-info fs-4">
+        <div class="row">
+            Integrantes:
+            <div class="col">Matias Rivero</div>
+            <div class="col">Alexis Casimiro</div>
+            <div class="col">Francisco Insua</div>
+            <div class="col">Juan Pablo Urra</div>
+        </div>
+    </div>
+
+</footer>
 
 </html>

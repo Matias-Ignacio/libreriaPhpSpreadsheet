@@ -1,36 +1,35 @@
 <?php
-class Venta{
+class DetalleVenta{
 
     private $idVenta;
-    private $fecha;
-    private $importe;
+    private $objReloj;
+    private $cantidad;
     private $mensaje; 
 
     // Constructor
     public function __construct()
     {
         $this->idVenta="";
-        $this->fecha="";
-        $this->importe = 0;
+        $this->objReloj = new Reloj();
+        $this->cantidad = 0;
         
     }//  fin cinstructor
 
-    public function setear($idVenta,$fecha,$importe){
+    public function setear($idVenta,$objReloj,$cantidad){
         $this->setidVenta($idVenta);
-        $this->setfecha($fecha);
-        $this->setimporte($importe);
+        $this->setobjReloj($objReloj);
+        $this->setcantidad($cantidad);
     }// fin function 
 
     //  METODO GET
     public function getidVenta(){
         return $this->idVenta; 
     }
-
-    public function getfecha(){
-        return $this->fecha; 
+    public function getobjReloj(){
+        return $this->objReloj; 
     }
-    public function getimporte(){
-        return $this->importe; 
+    public function getcantidad(){
+        return $this->cantidad; 
     }
     public function getMensaje(){
         return $this->mensaje;
@@ -41,11 +40,11 @@ class Venta{
     public function setidVenta($p){
         $this->idVenta=$p;
     }
-    public function setfecha($fecha){
-        $this->fecha=$fecha;
+    public function setobjReloj($objReloj){
+        $this->objReloj=$objReloj;
     }
-    public function setimporte($p){
-        $this->importe=$p;
+    public function setcantidad($p){
+        $this->cantidad=$p;
     }
     public function setMensaje($mensaje){
         $this->mensaje=$mensaje;
@@ -56,9 +55,9 @@ class Venta{
      */
     public function getDatos(){
         $ID = $this->getidVenta();
-        $fec = $this->getfecha();
-        $imp = $this->getimporte();
-        $array = ["$ID","$fec","$imp"];
+        $rel = $this->getobjReloj()->getnombreReloj();
+        $can = $this->getcantidad();
+        $array = ["$ID","$rel","$can"];
 
         return $array;
     }
@@ -72,20 +71,23 @@ class Venta{
     public function cargar(){
         $resp=false; 
        $base=new BaseDatos("Relojes");
-       $sql="SELECT * FROM Venta WHERE idVenta='".$this->getidVenta()."'";
+       $sql="SELECT * FROM detalleVenta WHERE idVenta='".$this->getidVenta()."'";
        if($base->Iniciar()){
         $res=$base->Ejecutar($sql);
         if($res>-1){
             if($res>0){
                 $row=$base->Registro();
-                // setear($idVenta,$fecha,$importe)
-                $this->setear($row["idVenta"],$row["fecha"],$row["importe"]);
+                $objReloj=new Reloj(); // creo al obj 
+                $objReloj->setidReloj($row['idReloj']); // seteo su id 
+                $objReloj->cargar(); 
+                // setear($idVenta,$fecha,$cantidad,$objReloj,$objMarca)
+                $this->setear($row["idVenta"],$row["cantidad"],$objReloj);
                 $resp=true; 
             }// fin if 
         }// fin if
        }// fin if 
        else{
-        $this->setMensaje(" Venta ->".$base->getError());
+        $this->setMensaje(" detalleVenta ->".$base->getError());
        }
 
        return $resp; 
@@ -102,20 +104,20 @@ class Venta{
     public function insertar(){
         $resp=false;
         $base=new BaseDatos("Relojes");
-        $sql="INSERT INTO Venta(idVenta,fecha,importe) VALUES('".$this->getidVenta()."','".$this->getfecha()."',
-        '".$this->getimporte()."');";
+        $sql="INSERT INTO detalleVenta(idVenta,cantidad,idReloj) VALUES('".$this->getidVenta()."',
+        '".$this->getcantidad()."','".$this->getobjReloj()->getidReloj().");";
         if($base->Iniciar()){
             if($elid=$base->Ejecutar($sql)){
                 $this->setidVenta($elid);// id 
                 $resp=true;
             }    
             else{
-                $this->setMensaje("Venta -> insertar ".$base->getError());
+                $this->setMensaje("detalleVenta -> insertar ".$base->getError());
             }
 
         }// fin if 
         else{
-            $this->setMensaje("Venta -> Insertar ".$base->getError());
+            $this->setMensaje("detalleVenta -> Insertar ".$base->getError());
         }
         return $resp; 
 
@@ -130,17 +132,18 @@ class Venta{
     public function modificar(){
         $res=false;
         $base=new BaseDatos("Relojes");
-        $sql="UPDATE Venta SET fecha='".$this->getfecha()."', importe='".$this->getimporte()."' WHERE idVenta='".$this->getidVenta()."'";
+        $sql="UPDATE detalleVenta SET cantidad='".$this->getcantidad()."'
+        , objReloj='".$this->getobjReloj()->getidReloj()."' WHERE idVenta='".$this->getidVenta()."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $res=true;
             }
             else{
-                $this->setMensaje("Venta -> Modificar ".$base->getError());
+                $this->setMensaje("detalleVenta -> Modificar ".$base->getError());
             }        
         }
         else{
-            $this->setMensaje("Venta -> Modificar".$base->getError());
+            $this->setMensaje("detalleVenta -> Modificar".$base->getError());
         }
 
         return $res; 
@@ -155,7 +158,7 @@ class Venta{
     public function eliminar(){
         $res=false; 
         $base=new BaseDatos("Relojes");
-        $sql="DELETE FROM Venta WHERE idVenta='".$this->getidVenta()."'";
+        $sql="DELETE FROM detalleVenta WHERE idVenta='".$this->getidVenta()."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $res=true;
@@ -179,7 +182,7 @@ class Venta{
         $arreglo=array ();
         $base=new BaseDatos("Relojes");
         
-        $sql="SELECT * FROM Venta";
+        $sql="SELECT * FROM detalleVenta";
         if($parametro!=""){
             $sql.=' WHERE '.$parametro;
             
@@ -188,9 +191,12 @@ class Venta{
         if($res>-1){
             if($res>0){
                 while($row=$base->Registro()){
-                    $obj=new Venta();
-                    // setear($idVenta,$fecha,$importe)
-                    $obj->setear($row["idVenta"],$row["fecha"],$row["importe"]);
+                    $obj=new DetalleVenta();
+                    $objReloj = new Reloj();
+                    $objReloj->setidReloj($row["idReloj"]);
+                    $objReloj->cargar(); 
+                    // setear($idVenta,$cantidad,$objReloj)
+                    $obj->setear($row["idVenta"],$row["cantidad"],$objReloj);
                     array_push($arreglo,$obj); // carga el obj en el array 
                     
                 }

@@ -1,8 +1,10 @@
 <?php
 include_once '../../configuracion.php';
+include_once '../estructura/header.php';
 
 $objTipo=new AbmTipo();
 $datos=data_submitted();
+var_dump($datos);
 echo($datos['accion']);
 $obj=null; 
 if(isset($datos['idTipo'])){
