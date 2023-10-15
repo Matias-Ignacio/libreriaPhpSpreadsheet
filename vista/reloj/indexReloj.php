@@ -5,6 +5,7 @@ $objAbmReloj = new AbmReloj();
 
 
 $listaReloj = $objAbmReloj->buscar(null);
+//var_dump($listaReloj);
 ?>	
 
 <div class="container mt-3">
@@ -16,7 +17,6 @@ $listaReloj = $objAbmReloj->buscar(null);
             <th style="width:10%">Id</th>
             <th style="width:50%">Nombre del Reloj</th>
             <th style="width:10%">Precio</th>
-            <th style="width:10%">Stock</th>
             <th style="width:10%">Id Marca</th>
             <th style="width:10%">Id Tipo</th>
         </tr>
@@ -27,7 +27,6 @@ $listaReloj = $objAbmReloj->buscar(null);
                     <td><input type="hidden" name="idReloj" value="<?php echo($reloj->getidreloj()) ?>"> <?php echo($reloj->getidreloj()) ?></td>
                     <td><input type="hidden" name="nombreReloj" value="<?php echo($reloj->getnombreReloj()) ?>"> <?php echo($reloj->getnombrereloj())?></td>
                     <td><input type="hidden" name="precio" value="<?php echo($reloj->getprecio()) ?>"> <?php echo($reloj->getprecio())?></td>
-                    <td><input type="hidden" name="stock" value="<?php echo($reloj->getstock()) ?>"> <?php echo($reloj->getstock())?></td>
                     <td><input type="hidden" name="idTipo" value="<?php echo($reloj->getobjTipo()->getidTipo()) ?>"> <?php echo($reloj->getobjTipo()->getnombreTipo())?></td>
                     <td><input type="hidden" name="idMarca" value="<?php echo($reloj->getobjMarca()->getidMarca()) ?>"> <?php echo($reloj->getobjMarca()->getnombreMarca())?></td>
                     <td><input type="submit" name="accion" id="editar" value="editar"></td>
@@ -40,7 +39,9 @@ $listaReloj = $objAbmReloj->buscar(null);
         
     </table>
   </form>
+  <button class="" id="irCargarExcel" onclick="document.location='cargarExcel.php'">Carga Excel de Relojes </button>
 </div>
+
 
 <?php
 include_once("../estructura/footer.php");

@@ -33,9 +33,9 @@ echo $message;
 */
 
 // codigo para convertir una tabla html en un excel, usando la libreria 
-include_once '../../vendor/autoload.php';
-use PhpOffice\PhpSpreadsheet\IOFactory;
-
+//include_once '../../vendor/autoload.php';
+//use PhpOffice\PhpSpreadsheet\IOFactory;
+/** 
 $datos =data_submitted(); 
 
 if(isset($datos['file_content'])){
@@ -55,6 +55,7 @@ if(isset($datos['file_content'])){
     exit;
 }// fin if 
 
+*/
 
 
 
