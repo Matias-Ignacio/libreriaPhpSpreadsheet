@@ -1,5 +1,6 @@
 <?php
-  include_once("../../configuracion.php")
+  include_once("../../configuracion.php");
+
 ?>
 <!doctype html>
 <html lang="en">

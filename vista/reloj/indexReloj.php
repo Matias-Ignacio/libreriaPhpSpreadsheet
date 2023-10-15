@@ -17,8 +17,13 @@ $listaReloj = $objAbmReloj->buscar(null);
             <th style="width:10%">Id</th>
             <th style="width:50%">Nombre del Reloj</th>
             <th style="width:10%">Precio</th>
+<<<<<<< HEAD
             <th style="width:10%">Id Marca</th>
             <th style="width:10%">Id Tipo</th>
+=======
+            <th style="width:10%">Marca</th>
+            <th style="width:10%">Tipo</th>
+>>>>>>> b45f881053eb5e0bc9b806557b952031dba29d55
         </tr>
         
             <?php if(count($listaReloj)>0){

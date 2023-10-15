@@ -1,19 +1,22 @@
 <?php
 
-    class AbmVenta{
+    class AbmDetalleVenta{
 
         /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
      * @param array $param
-     * @return Venta
+     * @return DetalleVenta
      */
     private function cargarObjeto($param){
         $obj = null;
            
-        if( array_key_exists('idVenta',$param) and array_key_exists('fecha',$param) and 
-        array_key_exists('importe',$param)){
-            $obj = new Venta(); 
-            $obj->setear($param["idVenta"],$param["fecha"],$param["importe"]);
+        if( array_key_exists('idVenta',$param) and array_key_exists('idReloj',$param) and 
+        array_key_exists('cantidad',$param)){
+            $obj = new DetalleVenta(); 
+            $objReloj = new Reloj();
+            $objReloj->setidReloj($param['idReloj']);
+            $obj->setear($param["idVenta"],$objReloj,$param["cantidad"]);
+
         }
         return $obj;
     }// fin cargarObjeto
@@ -113,16 +116,15 @@
         $where =" true ";
         if ($param<>NULL){
             if  (isset($param['idVenta']))
-                $where.=" and idVenta = '".$param['idVenta']."'";
-            if  (isset($param['fecha']))
-                 $where.=" and fecha = '".$param['fecha']."'";
-            if  (isset($param['importe']))
-                 $where.=" and importe = '".$param['importe']."'";
-                   
+            $where.=" and idVenta = '".$param['idVenta']."'";
+            if  (isset($param['idReloj']))
+                 $where.=" and idReloj = '".$param['idReloj']."'";
+            if  (isset($param['cantidad']))
+                 $where.=" and cantidad = '".$param['cantidad']."'";              
             }// fin if <> null
             echo("<br>"); 
            // var_dump($where); 
-            $arreglo = Venta::listar($where);  
+            $arreglo = DetalleVenta::listar($where);  
             
         return $arreglo;
     }// fin function buscar

@@ -25,6 +25,15 @@
             }// fin if 
 
         }// fin if
+        if($datos['accion']=='Excel'){
+            $arreglo_titulos = ["ID", "Relojes"];
+            $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet);
+            $activeWorksheet = bodyHC($listaObj, $activeWorksheet);
+            writeHC($spreadsheet);
+            $resp=true;
+            echo "<h3>Hecho</h3>";
+            echo "<a href='../../Archivos/Relojes.xlsx'>Descarga Excel</a>";       
+        }
         if($resp){
             $mensaje="La accion ".$datos['accion']."  se realizao correctamente " ;
         }

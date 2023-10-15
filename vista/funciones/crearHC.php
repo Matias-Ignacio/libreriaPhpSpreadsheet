@@ -6,15 +6,26 @@ include_once '../../configuracion.php';
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Phpoffice\Phpspreadsheet\Worksheet\Worksheet;
-//use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 $spreadsheet = new Spreadsheet(); // crea un obj spreadsheet 
-//$activeWorksheet = $spreadsheet->getActiveSheet();
-$myWorkSheet = new PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($spreadsheet, $hoja);
+$spreadsheet
+->getProperties()
+->setCreator("Grupo_5A")
+->setTitle('Excel creado con PhpSpreadSheet')
+->setSubject('Excel de prueba')
+->setDescription('Excel generado como demostración')
+->setKeywords('PHPSpreadsheet')
+->setCategory('Categoría Excel');
+$activeWorksheet = $spreadsheet->getActiveSheet();
+$activeWorksheet->setTitle($hoja);
+//Crea una nueva hoja con el nombre pasado por la variable $hoja
+//$myWorkSheet = new PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($spreadsheet, $hoja);
+//$spreadsheet->addSheet($myWorkSheet, 0);
+//Activa la hoja por el nombre
+//$activeWorksheet = $spreadsheet->setActiveSheetIndexByName($hoja);  
 
-// Attach the "My Data" worksheet as the first worksheet in the Spreadsheet object
-$spreadsheet->addSheet($myWorkSheet, 0);
-$activeWorksheet = $spreadsheet->setActiveSheetIndexByName($hoja);
+
 
 /**
  * Encabezado de la hoja de calculo
@@ -23,21 +34,20 @@ $activeWorksheet = $spreadsheet->setActiveSheetIndexByName($hoja);
  * @return Worksheet        //clase hoja
  */
 function headHC($array, $WP){
-    $celda_letra = 64;      // ascii "A"-1
+    $celda_letra = 65;      // ascii "A"
     foreach ($array as $value) {
-        $celda = chr(++$celda_letra) . "1";
+        $celda = chr(++$celda_letra) . "2";
         $WP->setCellValue($celda, $value);
-        
     }
     //Bordes y estilo
-    $WP->getStyle('A1:B1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLUE);
-    $WP->getStyle('A1:B1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-    $WP->getStyle('A1:B1')->getBorders()->getTop()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
-    $WP->getStyle('A1:B1')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
-    $WP->getStyle('A1:B1')->getBorders()->getLeft()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
-    $WP->getStyle('A1:B1')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
-    $WP->getStyle('A1:B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
-    $WP->getStyle('A1:B1')->getFill()->getStartColor()->setARGB('33337777');
+    $WP->getStyle('B2:C2')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLUE);
+    $WP->getStyle('B2:C2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    $WP->getStyle('B2:C2')->getBorders()->getTop()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
+    $WP->getStyle('B2:C2')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
+    $WP->getStyle('B2:C2')->getBorders()->getLeft()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
+    $WP->getStyle('B2:C2')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
+    $WP->getStyle('B2:C2')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+    $WP->getStyle('B2:C2')->getFill()->getStartColor()->setARGB('33337777');
 
     return $WP;
 }
@@ -48,44 +58,36 @@ function headHC($array, $WP){
  * @param Worksheet         //clase hoja
  * @return Worksheet        //clase hoja
  */
-function bodyHC($array, $WP){
-    foreach ($array as $key => $value) { 
-        $WP->setCellValue($key, $value);
-    }
-    $WP->getStyle('A2:B7')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+function bodyHC($lista, $WP){  //Pasaba $array
+    $fila = 3;
+    $columna = 2;
+    foreach ($lista as $key1 => $obj) {
+        $arregloDatoObjeto = $obj->getDatos();
+        foreach ($arregloDatoObjeto as $key => $datObj) { 
+            $WP->setCellValueByColumnAndRow($columna+$key, $fila+$key1, $datObj);
+        }
+    }    
+    $WP->getStyle('A3:B8')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
     return $WP;
 }
+
+
 
 /**
  * Escribir en el archivo de hoja de calculo
  * @param Spreadsheet
  */
 function writeHC($spreadsheet){
-    $write =PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet,"Xlsx");
-    $write->save("grupo5.xlsx");
+    //$write =PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet,"Xlsx");
+    //$write->save("grupo5.xlsx");
+    $writer = new Xlsx($spreadsheet);
+    $writer->save('../../Archivos/Relojes.xlsx');
+    /*$fileName="Descarga_excel_Reloj.xlsx";
+    # Crear un "escritor"
     //$writer = new Xlsx($spreadsheet);
-    //$writer->save('hello world.xlsx');
+    # Le pasamos la ruta de guardado
+    
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment; filename="'. urlencode($fileName).'"');
+    $writer->save('php://output');*/
 }
-
-
-/**
- * forma el arreglo entremexclando los datos de los objetos
- * y los nombres de las celdas de excel para hacer la hoja de calculo
- * @param $lista
- * 
- * @return array
- */
-function formarArreglo($lista){
-    $arreglo_celdas = array();
-    $celda_letra = 65; //chr(65) A
-    $celda_numero = 2; //chr(50) 2
-    foreach ($lista as $key1 => $obj) {
-        $arregloDatoObjeto = $obj->getDatos();
-        foreach ($arregloDatoObjeto as $key => $datObj) {
-            $celda = chr($celda_letra + $key).$celda_numero + $key1;
-            $arreglo_celdas[$celda] = $datObj;       
-        }
-    }
-    return $arreglo_celdas;
-}
-

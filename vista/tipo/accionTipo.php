@@ -5,6 +5,7 @@
     include '../funciones/crearHC.php';
   
     $datos =data_submitted();
+    var_dump($datos);
     $resp=false; 
     $objTipo=new AbmTipo();
     $listaObj = $objTipo->buscar(null);
@@ -25,15 +26,14 @@
                 $resp=true;
             }// fin if 
         }// fin if
-        if($datos['accion']=='creaHC'){
+        if($datos['accion']=='Excel'){
             $arreglo_titulos = ["ID", "Tipo"];
-            $arreglo_celdas = formarArreglo($listaObj);
             $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet);
-            $activeWorksheet = bodyHC($arreglo_celdas, $activeWorksheet);
+            $activeWorksheet = bodyHC($listaObj, $activeWorksheet);
             writeHC($spreadsheet);
             $resp=true;
             echo "<h3>Hecho</h3>";
-            echo "<a href='grupo5.xlsx'>grupo5</a>";          
+            echo "<a href='../../Archivos/Relojes.xlsx'>Descarga Excel</a>";
         }
 
         if($resp){
