@@ -4,6 +4,7 @@ include_once("../estructura/header.php");
 $objAbmReloj = new AbmReloj();
 
 $listaReloj = $objAbmReloj->buscar(null);
+//var_dump($listaReloj);
 ?>	
 
 <div class="container mt-3">
@@ -13,10 +14,10 @@ $listaReloj = $objAbmReloj->buscar(null);
     <table class="table-striped">
         <tr>
             <th style="width:10%">Id</th>
-            <th style="width:45%">Nombre del Reloj</th>
-            <th style="width:15%">Precio</th>
-            <th style="width:15%">Marca</th>
-            <th style="width:15%">Tipo</th>
+            <th style="width:50%">Nombre del Reloj</th>
+            <th style="width:10%">Precio</th>
+            <th style="width:10%">Marca</th>
+            <th style="width:10%">Tipo</th>
         </tr>
         
             <?php if(count($listaReloj)>0){
@@ -35,10 +36,8 @@ $listaReloj = $objAbmReloj->buscar(null);
             } ?>
     </table>
   </form>
-  <form action="accionReloj.php" method="post">
-            <br><input type="submit" name="accion" id="creaHC" value="Exportar Excel" class="btn btn-dark">
-  </form>
 </div>
+
 
 <?php
 include_once("../estructura/footer.php");
