@@ -31,7 +31,7 @@
   <div class="d-flex">
     <div id="sidebar">
       <div class="p-2">
-        <a href="#" class="navbar-brand text-center text-light w-100 p-4 border-bottom">
+        <a href="../../index.php" class="navbar-brand text-center text-light w-100 p-4 border-bottom">
           Libreria PhpSpreadsheet
         </a>
       </div>
@@ -50,6 +50,9 @@
             </a>
             <a href="../tipo/indexTipo.php" class="list-group-item list-group-item-action bg-dark text-light pl-5">
               Tipo
+            </a>
+            <a href="../venta/indexVenta.php" class="list-group-item list-group-item-action bg-dark text-light pl-5">
+              Ventas
             </a>
           </div>
           <a href="#profile-items" data-toggle="collapse" aria-expanded="false"
@@ -100,9 +103,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown" aria-expanded="false">Dropdown</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07XL">
@@ -112,9 +112,6 @@
                 </div>
               </li>
             </ul>
-            <form class="form-inline my-2 my-md-0">
-              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            </form>
           </div>
         </div>
       </nav>

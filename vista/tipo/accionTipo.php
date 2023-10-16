@@ -5,28 +5,27 @@
     include '../funciones/crearHC.php';
   
     $datos =data_submitted();
-    var_dump($datos);
     $resp=false; 
     $objTipo=new AbmTipo();
     $listaObj = $objTipo->buscar(null);
 
     if(isset($datos['accion'])){
-        if(($datos['accion']=='editar')){
+        if(($datos['accion']=='Editar')){
             if($objTipo->modificacion($datos)){
                 $resp=true; 
             }// fin if 
         }// fin if
-        if($datos['accion']=='borrar'){
+        if($datos['accion']=='Borrar'){
             if($objTipo->baja($datos)){
                 $resp=true; 
             }// fin if 
         }// fin if 
-        if($datos['accion']=='nuevo'){
+        if($datos['accion']=='Nuevo'){
             if($objTipo->alta($datos)){
                 $resp=true;
             }// fin if 
         }// fin if
-        if($datos['accion']=='Excel'){
+        if($datos['accion']=='Exportar Excel'){
             $arreglo_titulos = ["ID", "Tipo"];
             $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet);
             $activeWorksheet = bodyHC($listaObj, $activeWorksheet);
@@ -51,3 +50,6 @@
     echo($mensaje);
     ?>
 </div>
+<?php
+include_once("../estructura/footer.php");
+?>

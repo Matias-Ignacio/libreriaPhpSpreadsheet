@@ -12,8 +12,8 @@ $listaMarca = $objAbmMarca->buscar(null);
   <form action="editarMarca.php" method="post">
     <table class="table-striped">
         <tr>
-            <th style="width:30%">Id</th>
-            <th style="width:70%">Nombre de la Marca</th>
+            <th style="width:20%">Id</th>
+            <th style="width:80%">Nombre de la Marca</th>
             <th style="width:auto"></th>
             <th style="width:auto"></th>
         </tr>
@@ -21,10 +21,9 @@ $listaMarca = $objAbmMarca->buscar(null);
             <?php if(count($listaMarca)>0){
                 foreach($listaMarca as $marca){?>
                     <tr>
-                    <td><input type="hidden" name="idMarca" value="<?php echo($marca->getidMarca()) ?>"> <?php echo($marca->getidMarca()) ?></td>
-                    <td><input type="hidden" name="nombreMarca" value="<?php echo($marca->getnombreMarca()) ?>"> <?php echo($marca->getnombreMarca())?></td>
-                    <td><input type="submit" name="accion" id="editar" value="editar"></td>
-                    <td><input type="submit" name="accion" id="borrar" value="borrar"></td>
+                    <td><?php echo($marca->getidMarca()) ?></td>
+                    <td><?php echo($marca->getnombreMarca())?></td>
+                    <td><a href="editarMarca.php?idMarca=<?php echo($marca->getidmarca()) ?>" class="btn btn-info">Editar</a></td>
                 </tr>
                 <?php    
                 }// fin for 
@@ -32,7 +31,7 @@ $listaMarca = $objAbmMarca->buscar(null);
     </table>
   </form>
   <form action="accionMarca.php" method="post">
-            <input type="submit" name="accion" id="creaHC" value="creaHC">
+            <input type="submit" name="accion" id="creaHC" value="Exportar Excel" class="btn btn-dark">
   </form>
 </div>
 

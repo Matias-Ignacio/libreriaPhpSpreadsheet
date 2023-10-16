@@ -3,7 +3,6 @@ $Titulo = "Lista Relojes";
 include_once("../estructura/header.php");
 $objAbmReloj = new AbmReloj();
 
-
 $listaReloj = $objAbmReloj->buscar(null);
 ?>	
 
@@ -14,29 +13,30 @@ $listaReloj = $objAbmReloj->buscar(null);
     <table class="table-striped">
         <tr>
             <th style="width:10%">Id</th>
-            <th style="width:50%">Nombre del Reloj</th>
-            <th style="width:10%">Precio</th>
-            <th style="width:10%">Marca</th>
-            <th style="width:10%">Tipo</th>
+            <th style="width:45%">Nombre del Reloj</th>
+            <th style="width:15%">Precio</th>
+            <th style="width:15%">Marca</th>
+            <th style="width:15%">Tipo</th>
         </tr>
         
             <?php if(count($listaReloj)>0){
                 foreach($listaReloj as $reloj){?>
                     <tr>
-                    <td><input type="hidden" name="idReloj" value="<?php echo($reloj->getidreloj()) ?>"> <?php echo($reloj->getidreloj()) ?></td>
-                    <td><input type="hidden" name="nombreReloj" value="<?php echo($reloj->getnombreReloj()) ?>"> <?php echo($reloj->getnombrereloj())?></td>
-                    <td><input type="hidden" name="precio" value="<?php echo($reloj->getprecio()) ?>"> <?php echo($reloj->getprecio())?></td>
-                    <td><input type="hidden" name="idTipo" value="<?php echo($reloj->getobjTipo()->getidTipo()) ?>"> <?php echo($reloj->getobjTipo()->getnombreTipo())?></td>
-                    <td><input type="hidden" name="idMarca" value="<?php echo($reloj->getobjMarca()->getidMarca()) ?>"> <?php echo($reloj->getobjMarca()->getnombreMarca())?></td>
-                    <td><input type="submit" name="accion" id="editar" value="editar"></td>
-                    <td><input type="submit" name="accion" id="borrar" value="borrar"></td>
+                    <td> <?php echo($reloj->getidreloj()) ?></td>
+                    <td> <?php echo($reloj->getnombrereloj())?></td>
+                    <td> <?php echo($reloj->getprecio())?></td>
+                    <td> <?php echo($reloj->getobjTipo()->getnombreTipo())?></td>
+                    <td> <?php echo($reloj->getobjMarca()->getnombreMarca())?></td>
+                    
+                    <td><a href="editarReloj.php?idReloj=<?php echo($reloj->getidreloj()) ?>" class="btn btn-info">Editar</a></td>
                 </tr>
                 <?php    
                 }// fin for 
             } ?>
-            
-        
     </table>
+  </form>
+  <form action="accionReloj.php" method="post">
+            <br><input type="submit" name="accion" id="creaHC" value="Exportar Excel" class="btn btn-dark">
   </form>
 </div>
 
