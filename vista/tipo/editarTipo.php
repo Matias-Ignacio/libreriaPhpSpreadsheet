@@ -1,5 +1,6 @@
 <?php
 include_once '../../configuracion.php';
+$Titulo = "Tipos";
 include_once '../estructura/header.php';
 
 $objTipo=new AbmTipo();

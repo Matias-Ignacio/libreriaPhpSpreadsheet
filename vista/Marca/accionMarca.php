@@ -5,6 +5,7 @@
     include '../funciones/crearHC.php';
 
     $datos =data_submitted();
+ 
     $resp=false; 
     $objMarca=new AbmMarca();
     $listaObj = $objMarca->buscar(null);

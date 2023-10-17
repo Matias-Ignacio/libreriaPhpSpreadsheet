@@ -58,18 +58,18 @@
           </div>
           <a href="#profile-items" data-toggle="collapse" aria-expanded="false"
             class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="fa fa-user mr-3" aria-hidden="true"></i>Profile
+            <i class="fa fa-user mr-3" aria-hidden="true"></i>Referencias
           </a>
           <div id="profile-items" class="collapse" data-parent="#sidebar-accordion">
-            <a href="#" class="list-group-item list-group-item-action bg-dark text-light pl-5">
-              Item 1
+            <a href="https://www.baulphp.com/generar-excel-con-phpspreadsheet-y-php-mysql/" class="list-group-item list-group-item-action bg-dark text-light pl-5">
+              baulphp
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark text-light pl-5">
-              Item 2
+            <a href="https://phpspreadsheet.readthedocs.io/en/latest/" class="list-group-item list-group-item-action bg-dark text-light pl-5">
+              Welcome PhpSpreadsheet
             </a>
           </div>
-          <a href="#" class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="fa fa-shopping-cart mr-3" aria-hidden="true"></i>Buy Now!
+          <a href="https://packagist.org/" class="list-group-item list-group-item-action bg-dark text-light">
+            <i class="fa fa-shopping-cart mr-3" aria-hidden="true"></i>Packagist
           </a>
           <a href="#setting-items" data-toggle="collapse" aria-expanded="false"
             class="list-group-item list-group-item-action bg-dark text-light">

@@ -1,5 +1,6 @@
 <?php
 include_once '../../configuracion.php';
+$Titulo = "Ventas";
 include_once '../estructura/header.php';
 
 $objVenta = new AbmVenta();
