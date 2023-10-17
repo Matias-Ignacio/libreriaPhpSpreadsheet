@@ -1,7 +1,7 @@
 <?php
     include_once '../../configuracion.php';
-    include_once '../estructura/header.php';
     $hoja = "Ventas";
+    include_once '../estructura/header.php';
     include '../funciones/crearHC.php';
   
     $datos =data_submitted();

@@ -1,21 +1,21 @@
 <?php
     include_once '../../configuracion.php';
+    $Titulo = "Lista de Relojer";
     include_once '../estructura/header.php';
     $hoja = "Relojes";
     include '../funciones/crearHC.php';
 
-    $datoss =data_submitted();
-    $datos = $datoss;
-    $datos["idMarca"] = intval($datoss["idMarca"]); 
-    $datos["idTipo"] = intval($datoss["idTipo"]);
-    $datos["precio"] = floatval($datoss["precio"]);
-
+    $datos =data_submitted();
+    
     $resp=false; 
     $objReloj=new AbmReloj();
     $listaObj = $objReloj->buscar(null);
-
+    
     if(isset($datos['accion'])){
         if(($datos['accion']=='Editar')){
+            $datos["idMarca"] = intval($datos["idMarca"]); 
+            $datos["idTipo"] = intval($datos["idTipo"]);
+            $datos["precio"] = floatval($datos["precio"]);
             if($objReloj->modificacion($datos)){
                 $resp=true; 
             }// fin if 
@@ -34,7 +34,7 @@
 
         }// fin if
         if($datos['accion']=='Exportar Excel'){
-            $arreglo_titulos = ["ID", "Relojes"];
+            $arreglo_titulos = ["ID", "Reloj", "Precio", "Tipo", "Marca"];
             $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet);
             $activeWorksheet = bodyHC($listaObj, $activeWorksheet);
             writeHC($spreadsheet);

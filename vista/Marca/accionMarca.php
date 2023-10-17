@@ -1,5 +1,6 @@
 <?php
     include_once '../../configuracion.php';
+    $Titulo = "Lista de Marcas";
     include_once '../estructura/header.php';
     $hoja = "Marcas";
     include '../funciones/crearHC.php';

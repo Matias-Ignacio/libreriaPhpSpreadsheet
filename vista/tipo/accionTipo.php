@@ -1,5 +1,6 @@
 <?php
     include_once '../../configuracion.php';
+    $Titulo = "Lista de Tipos";
     include_once '../estructura/header.php';
     $hoja = "Tipos";
     include '../funciones/crearHC.php';
