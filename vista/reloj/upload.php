@@ -39,20 +39,56 @@ $indicesSinModificar=[];
     <form action="#" method="post">
         <table>
             <tr>
-                <th>Id Reloj</th>
-                <th>Nombre del Reloj</th>
-                <th>Precio</th>
-                <th>Id Tipo</th>
-                <th>Id Marca</th>
+                <th style="width: 20%;">Id Reloj</th>
+                <th style="width: 20%;">Nombre del Reloj</th>
+                <th style="width: 20%;">Precio</th>
+                <th style="width: 20%;">Id Tipo</th>
+                <th style="width: 20%;">Id Marca</th>
             </tr>
             <!-- Caso 1°  count (datosBD) < count (datosExcel)-->
             <?php
-            $indices=comparar($datosBD,$datosExcel);
-            var_dump($indices);
-             
+            $indicesM=comparar($datosBD,$datosExcel); // indices modificados
+            $indicesN=nuevosRegistros($datosBD,$datosExcel); // indices nuevos
+            $indicesS=sinModificar($indicesM,$indicesN,$datosExcel); // indices sin modificar
+            $id=array_merge($indicesS,$indicesM,$indicesN);
+            $nroM=count($indicesM);
+            $nroS=count($indicesS);
+            $nroN=count($indicesN);
+            var_dump($id);
+
+            echo('<tr>'.PHP_EOL);
+            for($i=0;$i<count($datosExcel);$i++){
+                if($i<$nroS){
+                    echo('<td style="background-color:rgba(60,179,113,0.5)">'.$datosExcel[$id[$i]]['idReloj'].'</td>');
+                    echo('<td style="background-color:rgba(60,179,113,0.5)">'.$datosExcel[$id[$i]]['nombreReloj'].'</td>');
+                    echo('<td style="background-color:rgba(60,179,113,0.5)">'.$datosExcel[$id[$i]]['precio'].'</td>');
+                    echo('<td style="background-color:rgba(60,179,113,0.5)">'.$datosExcel[$id[$i]]['idTipo'].'</td>');
+                    echo('<td style="background-color:rgba(60,179,113,0.5)">'.$datosExcel[$id[$i]]['idMarca'].'</td>');
+
+                }// fin if
+                if($nroS<=$i && $i<($nroS+$nroM)){
+                    echo('<td style="background-color:rgba(255,0,0,0.5)">'.$datosExcel[$id[$i]]['idReloj'].'</td>');
+                    echo('<td style="background-color:rgba(255,0,0,0.5)">'.$datosExcel[$id[$i]]['nombreReloj'].'</td>');
+                    echo('<td style="background-color:rgba(255,0,0,0.5)">'.$datosExcel[$id[$i]]['precio'].'</td>');
+                    echo('<td style="background-color:rgba(255,0,0,0.5)">'.$datosExcel[$id[$i]]['idTipo'].'</td>');
+                    echo('<td style="background-color:rgba(255,0,0,0.5)">'.$datosExcel[$id[$i]]['idMarca'].'</td>');
+
+                }// fin if
+                if(($nroS+$nroM)<=$i && $i<($nroS+$nroM+$nroN-1)){
+                    echo('<td style="background-color:rgba(0,0,255,0.5)">'.$datosExcel[$id[$i]]['idReloj'].'</td>');
+                    echo('<td style="background-color:rgba(0,0,255,0.5)">'.$datosExcel[$id[$i]]['nombreReloj'].'</td>');
+                    echo('<td style="background-color:rgba(0,0,255,0.5)">'.$datosExcel[$id[$i]]['precio'].'</td>');
+                    echo('<td style="background-color:rgba(0,0,255,0.5)">'.$datosExcel[$id[$i]]['idTipo'].'</td>');
+                    echo('<td style="background-color:rgba(0,0,255,0.5)">'.$datosExcel[$id[$i]]['idMarca'].'</td>');
+
+                }// fin if 
+                echo('</tr>'.PHP_EOL);
+            }// fin for
+            
             ?>
         </table>
     </form>
+    <button type="submit"> Confirmar Datos </button>
 </div>
 
 

@@ -99,6 +99,45 @@ function bdToarray($arrayObj){
 }// fin function
 
 /**
+ * nuevosRegistros
+ * almacena los indeces de los nuevos registros 
+ * @param array datos
+ * @param array indicesModificados
+ * @return array
+ */
+function nuevosRegistros($datosB,$datosE){
+    $indices=[];
+    $k=0;
+    for($i=count($datosB);$i<count($datosE);$i++){ 
+        $indices[$k]=$datosE[$i]["idReloj"];  
+        $k++;
+    }// fin for
+    return $indices;
+
+}// fin function
+
+/**
+ * registroSinModificar
+ * Devuelve los registros 
+ * @param array indices
+ * @param array indices
+ * @param array  datos
+ * @return array
+ */
+function sinModificar($indiceM,$indiceN,$datos){
+
+    for($i=0;$i<count($datos);$i++){ 
+        $indices[$i]=$datos[$i]["idReloj"];  
+    }// fin for
+    $aux=array_merge($indiceM,$indiceN);
+    $indiceSinModificar=array_diff($indices,$aux);
+
+    return $indiceSinModificar;
+
+}// fin funcion 
+
+
+/**
  * comparar
  * compara los datos de la base de datos con del excel segun los campos
  * devolviendo los indices de los registros modificados 
