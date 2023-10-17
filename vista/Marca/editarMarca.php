@@ -1,5 +1,6 @@
 <?php
 include_once '../../configuracion.php';
+$Titulo = "Marcas";
 include_once '../estructura/header.php';
 
 $objMarca=new AbmMarca();

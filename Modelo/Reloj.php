@@ -135,7 +135,7 @@ class Reloj{
         $resp=false;
         $base=new BaseDatos("relojes");
         $sql="INSERT INTO Reloj(idReloj,nombreReloj,precio,idTipo,idMarca) VALUES('".$this->getidReloj()."','".$this->getnombreReloj()."',
-        '".$this->getprecio()."','".$this->getobjTipo()->getidTipo()."',".$this->getobjMarca()->getidMarca()."',".$this->getprecio().");";
+        '".$this->getprecio()."','".$this->getobjTipo()->getidTipo()."',".$this->getobjMarca()->getidMarca()."');";
         if($base->Iniciar()){
             if($elid=$base->Ejecutar($sql)){
                 $this->setidReloj($elid);// id 
@@ -163,9 +163,7 @@ class Reloj{
         $res=false;
         $base=new BaseDatos("relojes");
         $sql="UPDATE reloj SET nombreReloj='".$this->getnombreReloj()."', precio='".$this->getprecio()."'
-        , objTipo='".$this->getobjTipo()->getidTipo()."'
-        , idMarca='".$this->getobjMarca()->getidMarca()."',
-         precio='".$this->getprecio()."' WHERE idReloj='".$this->getidReloj()."'";
+        , idTipo='".$this->getobjTipo()->getidTipo()."', idMarca='".$this->getobjMarca()->getidMarca()."' WHERE idReloj='".$this->getidReloj()."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $res=true;
