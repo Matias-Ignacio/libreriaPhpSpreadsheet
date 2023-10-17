@@ -16,6 +16,8 @@ $listaReloj = $objAbmReloj->buscar(null);
             <th style="width:10%">Id</th>
             <th style="width:50%">Nombre del Reloj</th>
             <th style="width:10%">Precio</th>
+            <th style="width:10%">Id Marca</th>
+            <th style="width:10%">Id Tipo</th>
             <th style="width:10%">Marca</th>
             <th style="width:10%">Tipo</th>
         </tr>

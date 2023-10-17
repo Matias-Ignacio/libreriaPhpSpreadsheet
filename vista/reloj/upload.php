@@ -15,11 +15,11 @@
         $spreadsheet=mostrarExcel($archivoExcel);
         $datosExcel=excelToArray($spreadsheet);
         $datosBD=bdToarray($listaRelojes);
-        echo("Array asociatico del excel <br><br>");
-        var_dump($datosExcel);
+        //echo("Array asociatico del excel <br><br>");
+        //var_dump($datosExcel);
 
-        echo("<br><br> Array asociatico de la BD <br><br>");
-        var_dump($datosBD);
+        //echo("<br><br> Array asociatico de la BD <br><br>");
+        //var_dump($datosBD);
 
 
     }// fin if
@@ -28,7 +28,35 @@
 
     } // fin else
 
-
-
-    
+    // tabla de comparacion entre los datos del excel y la base de datos   
 ?>
+<?php
+$indicesModificados=[];
+$indicesNuevos=[];
+$indicesSinModificar=[];
+?>
+<div class="container">
+    <form action="#" method="post">
+        <table>
+            <tr>
+                <th>Id Reloj</th>
+                <th>Nombre del Reloj</th>
+                <th>Precio</th>
+                <th>Id Tipo</th>
+                <th>Id Marca</th>
+            </tr>
+            <!-- Caso 1°  count (datosBD) < count (datosExcel)-->
+            <?php
+            $indices=comparar($datosBD,$datosExcel);
+            var_dump($indices);
+             
+            ?>
+        </table>
+    </form>
+</div>
+
+
+
+
+
+

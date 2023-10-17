@@ -66,12 +66,12 @@ function excelToArray($spreadsheet){
     // pasa de un array indexado-indexado a uno indexado-asociativo
     $filaMax=$hojaActual->getHighestDataRow();
 
-    for($i=0; $i<$filaMax;$i++){
-        $datos[$i]['idReloj']=$datosExcel[$i][0];
-        $datos[$i]['nombreReloj']=$datosExcel[$i][1];
-        $datos[$i]['precio']=$datosExcel[$i][2];
-        $datos[$i]['idTipo']=$datosExcel[$i][3];
-        $datos[$i]['idMarca']=$datosExcel[$i][4];
+    for($i=1; $i<$filaMax;$i++){
+        $datos[$i-1]['idReloj']=$datosExcel[$i][0];
+        $datos[$i-1]['nombreReloj']=$datosExcel[$i][1];
+        $datos[$i-1]['precio']=$datosExcel[$i][2];
+        $datos[$i-1]['idTipo']=$datosExcel[$i][3];
+        $datos[$i-1]['idMarca']=$datosExcel[$i][4];
     }// fin for 
     
     return $datos;
@@ -98,6 +98,53 @@ function bdToarray($arrayObj){
 
 }// fin function
 
+/**
+ * comparar
+ * compara los datos de la base de datos con del excel segun los campos
+ * devolviendo los indices de los registros modificados 
+ * @param array BD
+ * @param array excel 
+ * @return array
+ */
+function comparar($BD,$excel){
+    $tamBD=count($BD);
+    $tamExcel=count($excel);
+    $indicesModificados=[];
+    $k=0; 
+    if($tamBD<=$tamExcel){
+        // index => nro de fila del registro
+        // valor => array asociativo del registro
+        // key => campo del registro
+        // dato => valor del registro segun el campo (key)
+        
+        foreach($BD as $index=>$valor){
+            $k++;
+            foreach($valor as $key=>$dato){
+                if($dato!=$excel[$index][$key]){ // compara los datos de la BD y del excel (ambos son array asociativos)
+                    $indicesModificados[$k]=$BD[$index]["idReloj"];
+                }// fin if
+            }// fin for 
+            
+        }// fin for
+        $indicesModificados=array_keys($indicesModificados);
+    }// fin if
+
+    if($tamBD>$tamExcel){
+        foreach($excel as $index=>$valor){
+            $k++;
+            foreach($valor as $key=>$dato){
+                if($dato!=$BD[$index][$key]){
+                    $indicesModificados[$k]=$excel[$index]["idReloj"];
+                }// fin if 
+
+            }// fin for
+        }// fin for    
+        $indicesModificados=array_keys($indicesModificados); 
+    }// fin if 
+    
+    return $indicesModificados;
+
+}// fun funcion 
 
 
 
