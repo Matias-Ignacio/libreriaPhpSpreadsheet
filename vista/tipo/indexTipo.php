@@ -12,9 +12,8 @@ $listaTipo = $objAbmTipo->buscar(null);
   <form action="editarTipo.php" method="post">
     <table class="table-striped">
         <tr>
-            <th style="width:30%">Id</th>
-            <th style="width:70%">Tipo de Reloj</th>
-            <th style="width:auto"></th>
+            <th style="width:20%">Id</th>
+            <th style="width:80%">Tipo de Reloj</th>
             <th style="width:auto"></th>
         </tr>
         
@@ -23,9 +22,7 @@ $listaTipo = $objAbmTipo->buscar(null);
                     <tr>
                     <td> <?php echo($tipo->getidtipo()) ?> </td>
                     <td> <?php echo($tipo->getnombretipo())?></td>
-                    <td><a href="editarTipo.php?idTipo=<?php echo($tipo->getidtipo()) ?>" >Editar</a></td>
-                    <td><a href="editarTipo.php?idTipo=<?php echo($tipo->getidtipo()) ?>" >Borrar</a></td>
-                    
+                    <td><a href="editarTipo.php?idTipo=<?php echo($tipo->getidtipo()) ?>" class="btn btn-info">Editar</a></td>
                     </tr>
                 <?php    
                 }// fin for 
@@ -33,11 +30,10 @@ $listaTipo = $objAbmTipo->buscar(null);
     </table>
   </form>
   <form action="accionTipo.php" method="post">
-            <input type="submit" name="accion" id="creaHC" value="Excel">
+            <br><input type="submit" name="accion" id="creaHC" value="Exportar Excel" class="btn btn-dark">
   </form>
 </div>
 
 <?php
 include_once("../estructura/footer.php");
-//<td><a href="editarTipo.php?idTipo=<?php echo($tipo->getidtipo())?>    <?php //">Editar</a></td></tr>
 ?>

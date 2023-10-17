@@ -4,7 +4,6 @@ include_once '../estructura/header.php';
 
 $objReloj=new AbmReloj();
 $datos=data_submitted();
-echo($datos['accion']);
 $obj=null; 
 if(isset($datos['idReloj'])){
     $listaRelojes=$objReloj->buscar($datos);
@@ -16,27 +15,28 @@ if(isset($datos['idReloj'])){
 ?>
 
 <?php  if($obj!=null){?>
-    <div class="container">
+    <div class="container mt-3">
         <form action="accionReloj.php" method="post">
-            <label for="id">ID</label>
-            <input type="number" name="idReloj" id="idReloj" readonly value="<?php echo($obj->getidReloj()) ?>">
-            <label for="nombreTipo"> Nombre del Reloj</label>
-            <input type="text" name="nombreReloj" id="nombreReloj" value="<?php echo($obj->getnombreReloj()) ?>">
-            <label for="nombreTipo"> Precio</label>
-            <input type="text" name="precio" id="precio" value="<?php echo($obj->getprecio()) ?>">
-            <label for="nombreTipo"> Stock</label>
-            <input type="text" name="stock" id="stock" value="<?php echo($obj->getstock()) ?>">
-            <label for="nombreTipo"> Id Marca</label>
-            <input type="text" name="idMraca" id="idMarca" value="<?php echo($obj->getobjMarca()->getidMarca()) ?>">
-            <label for="nombreTipo"> Id Tipo </label>
-            <input type="text" name="idTipo" id="idTipo" value="<?php echo($obj->getobjTipo()->getidTipo()) ?>">
-            <input type="hidden" name="accion" id="accion" value="<?php echo(($datos['accion']=='borrar') ?  "borrar" : "editar") ?>">
-            <input type="submit" value="<?php echo(($datos['accion']=='borrar') ?  "borrar" : "editar") ?>">
+            <label for="id" style="width:120px">Codigo ID</label>
+            <input type="number" name="idReloj" id="idReloj" readonly value="<?php echo($obj->getidReloj()) ?>"><br>
+            <label for="nombreTipo" style="width:120px"> Reloj</label>
+            <input type="text" name="nombreReloj" id="nombreReloj" value="<?php echo($obj->getnombreReloj()) ?>"><br>
+            <label for="nombreTipo" style="width:120px"> Precio</label>
+            <input type="text" name="precio" id="precio" value="<?php echo($obj->getprecio()) ?>"><br>
+            <label for="nombreTipo" style="width:120px"> Id Marca</label>
+            <input type="text" name="idMraca" id="idMarca" value="<?php echo($obj->getobjMarca()->getnombreMarca()) ?>"><br>
+            <label for="nombreTipo" style="width:120px"> Id Tipo </label>
+            <input type="text" name="idTipo" id="idTipo" value="<?php echo($obj->getobjTipo()->getnombreTipo()) ?>"><br><br>
+            <input type="submit" name="accion" id="borrar" class="btn btn-danger" value="Borrar">
+            <input type="submit" name="accion" id="editar" class="btn btn-info" value="Editar">
+            <a href="indexReloj.php" class="btn btn-secondary">Volver</a>
         </form>
     
 <?php } else{
         echo("<p>No se encontro el campo que desea modificar </p>");     
     }
 ?>
-    <a href="indexReloj.php">Volver</a>
     </div>
+<?php
+include_once("../estructura/footer.php");
+?>
