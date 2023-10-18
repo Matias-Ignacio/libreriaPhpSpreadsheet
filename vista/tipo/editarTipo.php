@@ -22,7 +22,7 @@ if(isset($datos['idTipo'])){
             <label for="nombreTipo" style="width:100px">Tipo de Reloj</label>
             <input type="text" name="nombreTipo" id="nombreTipo" value="<?php echo($obj->getnombreTipo()) ?>"><br><br>
             <input type="submit" name="accion" id="borrar" class="btn btn-danger" value="Borrar">
-            <input type="submit" name="accion" id="editar" class="btn btn-info" value="Editar">
+            <input type="submit" name="accion" id="editar" class="btn btn-info" value="Cambiar">
             <a href="indexTipo.php" class="btn btn-secondary">Volver</a>
         </form>
     

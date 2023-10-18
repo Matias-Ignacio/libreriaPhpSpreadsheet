@@ -11,7 +11,7 @@
     $listaObj = $objTipo->buscar(null);
 
     if(isset($datos['accion'])){
-        if(($datos['accion']=='Editar')){
+        if(($datos['accion']=='Cambiar')){
             if($objTipo->modificacion($datos)){
                 $resp=true; 
             }// fin if 

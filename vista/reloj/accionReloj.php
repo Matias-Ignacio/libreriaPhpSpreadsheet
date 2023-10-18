@@ -12,7 +12,7 @@
     $listaObj = $objReloj->buscar(null);
     
     if(isset($datos['accion'])){
-        if(($datos['accion']=='Editar')){
+        if(($datos['accion']=='Cambiar')){
             $datos["idMarca"] = intval($datos["idMarca"]); 
             $datos["idTipo"] = intval($datos["idTipo"]);
             $datos["precio"] = floatval($datos["precio"]);

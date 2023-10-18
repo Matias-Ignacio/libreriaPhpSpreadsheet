@@ -102,6 +102,8 @@ INSERT INTO `tipo` (`idTipo`, `nombreTipo`) VALUES
 CREATE TABLE `venta` (
   `idVenta` int(11) NOT NULL,
   `fecha` date NOT NULL,
+  `idReloj` int(11) NOT NULL,
+  `cantidad` int(2),
   `importe` double(7,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -109,38 +111,15 @@ CREATE TABLE `venta` (
 -- Volcado de datos para la tabla `venta`
 --
 
-INSERT INTO `venta` (`idVenta`, `fecha`, `importe`) VALUES
-(1, '2023-10-10', 3),
-(2, '2023-10-10', 6),
-(3, '2023-10-11', 1),
-(4, '2023-10-12', 5),
-(5, '2023-10-13', 4),
-(6, '2023-10-09', 2);
-
--- --------------------------------------------------------
+INSERT INTO `venta` (`idVenta`, `fecha`, `idReloj`, `cantidad`, `importe`) VALUES
+(1, '2023-10-10', 2, 1, 3),
+(2, '2023-10-10', 2, 1, 6),
+(3, '2023-10-11', 3, 1, 1),
+(4, '2023-10-12', 3, 1, 5),
+(5, '2023-10-13', 4, 1, 4),
+(6, '2023-10-09', 5, 1, 2);
 
 
---
--- Estructura de tabla para la tabla `detalleVenta`
---
-
-CREATE TABLE `detalleVenta` (
-  `idVenta` int(11) NOT NULL,
-  `idReloj` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `detalleVenta`
---
-
-INSERT INTO `detalleVenta` (`idVenta`, `idReloj`, `cantidad`) VALUES
-(1, 1, 3),
-(2, 2, 6),
-(3, 3, 1),
-(4, 1, 5),
-(5, 4, 4),
-(6, 6, 2);
 
 -- --------------------------------------------------------
 --
@@ -170,7 +149,8 @@ ALTER TABLE `tipo`
 -- Indices de la tabla `venta`
 --
 ALTER TABLE `venta`
-  ADD PRIMARY KEY (`idVenta`);  
+  ADD PRIMARY KEY (`idVenta`),
+  ADD KEY `idReloj` (`idReloj`),;  
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -211,8 +191,8 @@ ALTER TABLE `reloj`
 
 -- Filtros para la tabla `venta`
 --
-ALTER TABLE `detalleVenta`
-  ADD CONSTRAINT `detalleVenta_ibfk_1` FOREIGN KEY (`idVenta`) REFERENCES `venta` (`idVenta`);
+ALTER TABLE `venta`
+  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`idReloj`) REFERENCES `reloj` (`idReloj`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

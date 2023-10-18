@@ -13,8 +13,10 @@ $listaObj = $objAbm->buscar(null);
     <table class="table-striped">
         <tr>
             <th style="width:20%">Id</th>
-            <th style="width:80%">Fecha</th>
-            <th style="width:80%">Importe</th>
+            <th style="width:20%">Fecha</th>
+            <th style="width:20%">Reloj</th>
+            <th style="width:20%">Cantidad</th>
+            <th style="width:20%">Importe</th>
             <th style="width:auto"></th>
         </tr>
         
@@ -23,6 +25,8 @@ $listaObj = $objAbm->buscar(null);
                     <tr>
                     <td> <?php echo($obj->getidVenta()) ?> </td>
                     <td> <?php echo($obj->getfecha())?></td>
+                    <td> <?php echo($obj->getobjReloj()->getnombreReloj())?></td>
+                    <td> <?php echo($obj->getcantidad())?></td>
                     <td> <?php echo($obj->getimporte())?></td>
                     <td><a href="editarVenta.php?idVenta=<?php echo($obj->getidVenta()) ?>" class="btn btn-info">Editar</a></td>
                     </tr>

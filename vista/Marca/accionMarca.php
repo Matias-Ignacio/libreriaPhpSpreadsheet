@@ -12,7 +12,7 @@
     $listaObj = $objMarca->buscar(null);
 
     if(isset($datos['accion'])){
-        if(($datos['accion']=='Editar')){
+        if(($datos['accion']=='Cambiar')){
             if($objMarca->modificacion($datos)){
                 $resp=true; 
             }// fin if 

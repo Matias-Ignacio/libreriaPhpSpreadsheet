@@ -10,7 +10,7 @@
     $listaObj = $obj->buscar(null);
 
     if(isset($datos['accion'])){
-        if(($datos['accion']=='Editar')){
+        if(($datos['accion']=='Cambiar')){
             if($obj->modificacion($datos)){
                 $resp=true; 
             }// fin if 
@@ -26,7 +26,7 @@
             }// fin if 
         }// fin if
         if($datos['accion']=='Exportar Excel'){
-            $arreglo_titulos = ["ID", "Fecha", "Importe"];
+            $arreglo_titulos = ["ID", "Fecha", "Reloj", "Cantidad", "Importe"];
             $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet);
             $activeWorksheet = bodyHC($listaObj, $activeWorksheet);
             writeHC($spreadsheet);
