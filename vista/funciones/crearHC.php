@@ -33,21 +33,21 @@ $activeWorksheet->setTitle($hoja);
  * @param Worksheet         //clase hoja
  * @return Worksheet        //clase hoja
  */
-function headHC($array, $WP){
+function headHC($array, $WP, $dimension){
     $celda_letra = 65;      // ascii "A"
     foreach ($array as $value) {
         $celda = chr(++$celda_letra) . "2";
         $WP->setCellValue($celda, $value);
     }
     //Bordes y estilo
-    $WP->getStyle('B2:C2')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLUE);
-    $WP->getStyle('B2:C2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-    $WP->getStyle('B2:C2')->getBorders()->getTop()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
-    $WP->getStyle('B2:C2')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
-    $WP->getStyle('B2:C2')->getBorders()->getLeft()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
-    $WP->getStyle('B2:C2')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
-    $WP->getStyle('B2:C2')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
-    $WP->getStyle('B2:C2')->getFill()->getStartColor()->setARGB('33337777');
+    $WP->getStyle($dimension)->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLUE);
+    $WP->getStyle($dimension)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    $WP->getStyle($dimension)->getBorders()->getTop()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
+    $WP->getStyle($dimension)->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
+    $WP->getStyle($dimension)->getBorders()->getLeft()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
+    $WP->getStyle($dimension)->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK);
+    $WP->getStyle($dimension)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+    $WP->getStyle($dimension)->getFill()->getStartColor()->setARGB('33334444');
 
     return $WP;
 }
@@ -58,16 +58,18 @@ function headHC($array, $WP){
  * @param Worksheet         //clase hoja
  * @return Worksheet        //clase hoja
  */
-function bodyHC($lista, $WP){  //Pasaba $array
+function bodyHC($lista, $WP, $dimension){  //Pasaba $array
     $fila = 3;
     $columna = 2;
     foreach ($lista as $key1 => $obj) {
         $arregloDatoObjeto = $obj->getDatos();
+        $largo = $fila + $key1;
         foreach ($arregloDatoObjeto as $key => $datObj) { 
             $WP->setCellValueByColumnAndRow($columna+$key, $fila+$key1, $datObj);
         }
     }    
-    $WP->getStyle('A3:B8')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    $dimension = $dimension . $largo;
+    $WP->getStyle($dimension)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
     return $WP;
 }
 

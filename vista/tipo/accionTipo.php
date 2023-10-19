@@ -28,8 +28,10 @@
         }// fin if
         if($datos['accion']=='Exportar Excel'){
             $arreglo_titulos = ["ID", "Tipo"];
-            $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet);
-            $activeWorksheet = bodyHC($listaObj, $activeWorksheet);
+            $dimension = "B2:C2";
+            $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet, $dimension);
+            $dimension = "B3:C";
+            $activeWorksheet = bodyHC($listaObj, $activeWorksheet, $dimension);
             writeHC($spreadsheet);
             $resp=true;
             echo "<h3>Hecho</h3>";
