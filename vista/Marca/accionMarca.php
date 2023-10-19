@@ -1,5 +1,6 @@
 <?php
     include_once '../../configuracion.php';
+    $Titulo = "Lista de Marcas";
     include_once '../estructura/header.php';
     $hoja = "Marcas";
     include '../funciones/crearHC.php';
@@ -11,7 +12,7 @@
     $listaObj = $objMarca->buscar(null);
 
     if(isset($datos['accion'])){
-        if(($datos['accion']=='Editar')){
+        if(($datos['accion']=='Cambiar')){
             if($objMarca->modificacion($datos)){
                 $resp=true; 
             }// fin if 

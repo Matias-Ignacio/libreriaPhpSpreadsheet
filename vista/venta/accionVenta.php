@@ -1,7 +1,7 @@
 <?php
     include_once '../../configuracion.php';
-    include_once '../estructura/header.php';
     $hoja = "Ventas";
+    include_once '../estructura/header.php';
     include '../funciones/crearHC.php';
   
     $datos =data_submitted();
@@ -10,7 +10,7 @@
     $listaObj = $obj->buscar(null);
 
     if(isset($datos['accion'])){
-        if(($datos['accion']=='Editar')){
+        if(($datos['accion']=='Cambiar')){
             if($obj->modificacion($datos)){
                 $resp=true; 
             }// fin if 
@@ -26,7 +26,7 @@
             }// fin if 
         }// fin if
         if($datos['accion']=='Exportar Excel'){
-            $arreglo_titulos = ["ID", "Fecha", "Importe"];
+            $arreglo_titulos = ["ID", "Fecha", "Reloj", "Cantidad", "Importe"];
             $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet);
             $activeWorksheet = bodyHC($listaObj, $activeWorksheet);
             writeHC($spreadsheet);

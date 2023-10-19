@@ -22,7 +22,7 @@ if(isset($datos['idMarca'])){
             <label for="nombreMarca" style="width:150px"> Nombre de la Marca</label>
             <input type="text" name="nombreMarca" id="nombreMarca" value="<?php echo($obj->getnombreMarca()) ?>"><br><br>
             <input type="submit" name="accion" id="borrar" class="btn btn-danger" value="Borrar">
-            <input type="submit" name="accion" id="editar" class="btn btn-info" value="Editar">
+            <input type="submit" name="accion" id="editar" class="btn btn-info" value="Cambiar">
             <a href="indexMarca.php" class="btn btn-secondary">Volver</a>
         </form>
     

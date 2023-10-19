@@ -10,10 +10,12 @@
     private function cargarObjeto($param){
         $obj = null;
            
-        if( array_key_exists('idVenta',$param) and array_key_exists('fecha',$param) and 
-        array_key_exists('importe',$param)){
+        if( array_key_exists('idVenta',$param) and array_key_exists('fecha',$param)  and array_key_exists('idReloj',$param) and 
+        array_key_exists('cantidad',$param) and array_key_exists('importe',$param)){
             $obj = new Venta(); 
-            $obj->setear($param["idVenta"],$param["fecha"],$param["importe"]);
+            $objReloj = new Reloj();
+            $objReloj->setidReloj($param['idReloj']);
+            $obj->setear($param["idVenta"],$param["fecha"],$objReloj,$param["cantidad"],$param["importe"]);
         }
         return $obj;
     }// fin cargarObjeto
@@ -31,7 +33,7 @@
         
         if( isset($param['idVenta']) ){
             $obj = new Venta();
-            $obj->setear($param['idVenta'],null,null);
+            $obj->setear($param['idVenta'],null,null,null,null);
         }
         return $obj;
     }// fin function cargarObjetoConClave
@@ -116,6 +118,10 @@
                 $where.=" and idVenta = '".$param['idVenta']."'";
             if  (isset($param['fecha']))
                  $where.=" and fecha = '".$param['fecha']."'";
+            if  (isset($param['idReloj']))
+                 $where.=" and idReloj = '".$param['idReloj']."'";
+            if  (isset($param['cantidad']))
+                 $where.=" and cantidad = '".$param['cantidad']."'";                              
             if  (isset($param['importe']))
                  $where.=" and importe = '".$param['importe']."'";
                    
