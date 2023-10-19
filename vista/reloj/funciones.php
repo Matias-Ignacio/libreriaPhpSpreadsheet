@@ -6,6 +6,7 @@ include_once '../../vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Worksheet;
+use PhpOffice\PhpSpreadsheet\Style;
 
 /**
  * mostrarExcel
@@ -99,92 +100,96 @@ function bdToarray($arrayObj){
 }// fin function
 
 /**
- * nuevosRegistros
- * almacena los indeces de los nuevos registros 
- * @param array datos
- * @param array indicesModificados
- * @return array
+ * arrayID
+ * @param array datos BD 
+ * @return array de id
  */
-function nuevosRegistros($datosB,$datosE){
-    $indices=[];
-    $k=0;
-    for($i=count($datosB);$i<count($datosE);$i++){ 
-        $indices[$k]=$datosE[$i]["idReloj"];  
-        $k++;
-    }// fin for
-    return $indices;
+function arrayIdBD($BD){
+    $id=[];
+    foreach($BD as $index=>$valor){
+        $id[$index]=$valor["idReloj"];
 
-}// fin function
+    }// fin for
+    
+    return $id; 
+
+}// fin function 
 
 /**
- * registroSinModificar
- * Devuelve los registros 
- * @param array indices
- * @param array indices
- * @param array  datos
- * @return array
+ * arrayID
+ * @param array datos excel 
+ * @return array de id
  */
-function sinModificar($indiceM,$indiceN,$datos){
+function arrayIdExcel($excel){
+    $id=[];
+    foreach($excel as $index=>$valor){
+        $id[$index]=$valor["idReloj"];
 
-    for($i=0;$i<count($datos);$i++){ 
-        $indices[$i]=$datos[$i]["idReloj"];  
     }// fin for
-    $aux=array_merge($indiceM,$indiceN);
-    $indiceSinModificar=array_diff($indices,$aux);
+    
+    return $id; 
 
-    return $indiceSinModificar;
+}// fin function 
 
-}// fin funcion 
 
 
 /**
  * comparar
  * compara los datos de la base de datos con del excel segun los campos
- * devolviendo los indices de los registros modificados 
+ * devolviendo los indices de los registros modificados  - sin modificar y nuevos 
  * @param array BD
  * @param array excel 
  * @return array
  */
 function comparar($BD,$excel){
-    $tamBD=count($BD);
-    $tamExcel=count($excel);
-    $indicesModificados=[];
-    $k=0; 
-    if($tamBD<=$tamExcel){
-        // index => nro de fila del registro
-        // valor => array asociativo del registro
-        // key => campo del registro
-        // dato => valor del registro segun el campo (key)
-        
-        foreach($BD as $index=>$valor){
-            $k++;
-            foreach($valor as $key=>$dato){
-                if($dato!=$excel[$index][$key]){ // compara los datos de la BD y del excel (ambos son array asociativos)
-                    $indicesModificados[$k]=$BD[$index]["idReloj"];
-                }// fin if
-            }// fin for 
-            
-        }// fin for
-        $indicesModificados=array_keys($indicesModificados);
-    }// fin if
-
-    if($tamBD>$tamExcel){
-        foreach($excel as $index=>$valor){
-            $k++;
-            foreach($valor as $key=>$dato){
-                if($dato!=$BD[$index][$key]){
-                    $indicesModificados[$k]=$excel[$index]["idReloj"];
-                }// fin if 
-
-            }// fin for
-        }// fin for    
-        $indicesModificados=array_keys($indicesModificados); 
-    }// fin if 
+    //$tamBD=count($BD);
+    //$tamExcel=count($excel);
+    $idBD=arrayIdBD($BD);
+    $idExcel=arrayIdExcel($excel);
+   // var_dump($idBD); 
+    //var_dump($idExcel);
     
-    return $indicesModificados;
+    // RECORRIDO DEL EXCEL Y COMPARAR CON LOS DATOS DE LA BD PARA DETERMINAR LOS ID 
+    // DE DATOS MODIFICADOS Y SIN MODIFICAR
+    foreach($BD as $index=>$valor){
+        // pregunta si el excel y la BD tienen el mismo id
+        
+        $estaId=array_search($valor["idReloj"],$idExcel); // consulta si el id de la BD esta en la del excel; da false si no lo encuentra  
+        $estaId=is_numeric($estaId); //
+        $contarCampo=0; 
+        //echo("<br>".$idBD[$index]."<br>");
+        if($estaId){
+           // echo("<br> ----------- bucle nro".$index."---------- <br>");
+            foreach($valor as $key=>$dato){
+
+                if($dato!=$excel[$idBD[$index]-1][$key]){
+                    //echo("<br> Dato:  ".$dato."<br>");
+                    //echo("<br> Dato excel:  ".$excel[$index][$key]."<br>");
+                    //echo("<br> key:  ".$key."<br>");
+                    $indicesModificados[$index]=$valor["idReloj"];                    
+                }// fin if
+                else{
+                    $contarCampo++;
+                }// fin else
+
+            }// fin for 
+
+        }// fin if
+        if($contarCampo==5){
+            $indicesSinModificar[$index]=$BD[$index]["idReloj"];
+        } // fin if
+
+    }// fin foreach
+
+    // guarda los indices nuevos 
+    $indicesNuevos=array_diff($idExcel,$idBD);
+    
+    $indices[0]=$indicesNuevos;
+    $indices[1]=$indicesModificados;
+    $indices[2]=$indicesSinModificar;
+    //$indices=array_merge($indicesModificados,$indicesSinModificar,$indicesNuevos);
+
+
+    return $indices;
 
 }// fun funcion 
-
-
-
-?>

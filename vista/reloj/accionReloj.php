@@ -6,13 +6,15 @@
 
     $datoss =data_submitted();
     $datos = $datoss;
+    $datos["idReloj"] = intval($datoss["idReloj"]);
     $datos["idMarca"] = intval($datoss["idMarca"]); 
     $datos["idTipo"] = intval($datoss["idTipo"]);
     $datos["precio"] = floatval($datoss["precio"]);
-
+    //var_dump($datos["idReloj"]);
     $resp=false; 
     $objReloj=new AbmReloj();
     $listaObj = $objReloj->buscar(null);
+
 
     if(isset($datos['accion'])){
         if(($datos['accion']=='Editar')){

@@ -1,5 +1,5 @@
 <?php
-    // Esta seccion carga un excel y lo muestra en el navegador
+   // Esta seccion carga un excel y lo muestra en el navegador
 $Titulo = "Carga Excel";
 include_once("../estructura/header.php");
 ?>
@@ -19,7 +19,7 @@ include_once("../estructura/header.php");
         </form>
     </div>
     <div id="areaExcel">
-
+        
     </div>
     <script src="../js/funciones.js"></script>
 </section>
