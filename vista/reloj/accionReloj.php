@@ -5,12 +5,27 @@
     $hoja = "Relojes";
     include '../funciones/crearHC.php';
 
+<<<<<<< HEAD
+    $datoss =data_submitted();
+    $datos = $datoss;
+    $datos["idReloj"] = intval($datoss["idReloj"]);
+    $datos["idMarca"] = intval($datoss["idMarca"]); 
+    $datos["idTipo"] = intval($datoss["idTipo"]);
+    $datos["precio"] = floatval($datoss["precio"]);
+    //var_dump($datos["idReloj"]);
+    $resp=false; 
+    $objReloj=new AbmReloj();
+    $listaObj = $objReloj->buscar(null);
+
+
+=======
     $datos =data_submitted();
     
     $resp=false; 
     $objReloj=new AbmReloj();
     $listaObj = $objReloj->buscar(null);
     
+>>>>>>> 64fb8c909dc6c1258beeb8eef5ab66d4e4b5921a
     if(isset($datos['accion'])){
         if(($datos['accion']=='Cambiar')){
             $datos["idMarca"] = intval($datos["idMarca"]); 

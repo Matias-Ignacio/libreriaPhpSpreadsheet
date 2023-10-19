@@ -134,8 +134,9 @@ class Reloj{
     public function insertar(){
         $resp=false;
         $base=new BaseDatos("relojes");
-        $sql="INSERT INTO Reloj(idReloj,nombreReloj,precio,idTipo,idMarca) VALUES('".$this->getidReloj()."','".$this->getnombreReloj()."',
-        '".$this->getprecio()."','".$this->getobjTipo()->getidTipo()."',".$this->getobjMarca()->getidMarca()."');";
+        $sql="INSERT INTO reloj (idReloj,nombreReloj,precio,idTipo,idMarca) VALUES('".$this->getidReloj()."','".$this->getnombreReloj()."',
+        ".$this->getprecio().",".$this->getobjTipo()->getidTipo().",".$this->getobjMarca()->getidMarca().");";
+        //var_dump($sql);
         if($base->Iniciar()){
             if($elid=$base->Ejecutar($sql)){
                 $this->setidReloj($elid);// id 

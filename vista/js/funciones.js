@@ -10,7 +10,8 @@ $(document).ready(function(){
             processData:false,
             success: function (data) {
                 $("#areaExcel").html(data);
-                $('table').css('width','100%');
+                $('table').css("width","100%");
+                //$("#sheet0").css("visibility","hidden");
                 
             }
         });
