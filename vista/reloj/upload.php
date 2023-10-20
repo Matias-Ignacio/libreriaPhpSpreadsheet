@@ -44,7 +44,7 @@ else {
         $nroM = count($indicesModificados);
         $nroS = count($indicesSinModificar);
         $nroN = count($indicesNuevos);
-
+        //var_dump($id);
         ?>
             <?php for ($i = 0; $i < count($datosExcel); $i++) {
                 if ($i<$nroN) {
@@ -98,6 +98,7 @@ else {
             ?>
             <button type="submit" class="btn btn-outline-primary mt-4 mb-4"> Confirmar Carga </button>
             </table>
+
         </form>
 
 

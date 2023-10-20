@@ -6,7 +6,7 @@
     include '../funciones/crearHC.php';
 
     $datos =data_submitted();
-    
+    //var_dump($datos);
     $resp=false; 
     $objReloj=new AbmReloj();
     $listaObj = $objReloj->buscar(null);
