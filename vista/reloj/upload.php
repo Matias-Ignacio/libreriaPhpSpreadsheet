@@ -41,7 +41,7 @@ else {
         $nroM = count($indicesModificados);
         $nroS = count($indicesSinModificar);
         $nroN = count($indicesNuevos);
-
+        //var_dump($id);
         ?>
 
             <?php for ($i = 0; $i < count($datosExcel); $i++) {
