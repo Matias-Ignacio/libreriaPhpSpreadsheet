@@ -21,24 +21,24 @@ include_once("header.php");
         <h4>Instalación</h4>
         <p>
             Una vez instalado composer , puede corroborarlo al ingresar a la terminal e ingresar <strong>composer -v</strong>.
-            Abra el editor de codigo con el cual trabaje y dirigase al directorio raiz del proyecto.
+            Abra el editor de codigo con el cual trabaje y dirigase al directorio raiz del proyecto.<br><br>
             <img src="../imagenes/Sin título.png" width="300px" height="80px"> 
-            <br>
+            <br><br>
             Para instalar la libreria escriba: <strong> composer require phpoffice/phpspreadsheet </strong><br>
             Se descargar una carpeta <strong>vendor</strong> donde se almacenará la libreria.  
         </p>
 
         <h4>Hello World</h4>
-        <img src="../imagenes/ejemplo.png"><br>
+        <img src="../imagenes/ejemplo.png"><br><br>
         Como se puede ver en el ejemplo lo primero que debemos hacer empezar a usar la libreria es llamar al script vendor 
         y con <strong>use</strong> llamamos las distintas clases para usar los metodos correspondientes. Por ejemplo la clase 
         <strong>Spreadsheet</strong> se utiliza para crear un objeto y llamar al metodo <strong>getActiveSheet()</strong> para activar 
-        la escritura o lectura dle archivo. El metodo <strong> set </strong>, escribimos en el archivo y el bjeto <strong>writer</strong>, 
+        la escritura o lectura del archivo. El metodo <strong> set </strong>, escribimos en el archivo y el objeto <strong>writer</strong>, 
         la usamos para guardar los cambios escritos. 
     </section>
 </div>
-<div role="main">
-    <div class="section">     
+<div class="container">
+    <section>     
         <h3>Clases Escritor y Lector de archivos</h3>
         <p>
         Para escribir o leer un archivo se usan las clases IWriter e IReader.<br>
@@ -52,14 +52,23 @@ include_once("header.php");
         <code>$writer->save("05featuredemo.xlsx");</code><br>
 
         </p>
-    </div>
+    </section>
 
-    <div class="section">
+    <div class="container">
         <h3>Clases "Hoja" y "Hoja de calculo"</h3>
-        <p>
+        <p>La instancia de clase Spreadsheet (Hoja de calculo) es el objeto principal que contiene los otros objetos.<br>
+        <code>$SP = new Spreadsheet();</code><br>
+        Para crear una instancia de clase Worksheet (Hoja o solapa):<br>
+        <code>$WS = new PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($SP, 'Nombre');</code><br>
+        <code>$SP->addSheet($WS, 0);</code><br>
+        Para cambiar el nombre a una solapa <br>
+        <code>$WS->setTitle('nombre);</code>
+        Para seleccionar una solapa por el nombre<br>
+        <code>$WS = $SP->setActiveSheetIndexByName('nombre'); </code><br>
+        Tambien se las puede seleccionar con el indice de la solapa
         </p>
     </div>
-    <div class="section">
+    <div class="container">
         <h3>Acceder a las celdas</h3>
         <p>
 
