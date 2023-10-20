@@ -74,23 +74,11 @@
           <a href="https://packagist.org/" class="list-group-item list-group-item-action bg-dark text-light">
             <i class="fa fa-shopping-cart mr-3" aria-hidden="true"></i>Packagist
           </a>
-          <a href="#setting-items" data-toggle="collapse" aria-expanded="false"
-            class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="fa fa-cog mr-3" aria-hidden="true"></i>Settings
-          </a>
-          <div id="setting-items" class="collapse" data-parent="#sidebar-accordion">
-            <div class="d-flex flex-row text-center">
-              <a href="#" class="list-group-item list-group-item-action bg-dark text-light">
-                Item 1
-              </a>
-              <a href="#" class="list-group-item list-group-item-action bg-dark text-light">
-                Item 2
-              </a>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
+
 
               
   

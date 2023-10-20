@@ -6,40 +6,42 @@ include_once("header.php");
 <head> 
     <link type="text/css" rel="stylesheet" href="../css/estilos.css">
 </head>
-<h2>Libreria PhpSpreadSheet</h2>
-<div class="container">
+<div class="flex-column">
+<h1 class ="tit">Libreria PhpSpreadSheet</h1>
+<div class="container mt-3" >
     <section>
-        <h4>Descripción</h4>
+        <h2 class ="tit">Descripción</h2>
         <p>Es una libreria escrita en PHP, ofreciendo una variedad de clases que permiten manipular archivos de excel, asi como 
             tambien otros tipos de archivo como CSV, SYLK, entre otros archivos.
         </p>
-        <h4>Requerimientos</h4>
+        <h2 class ="tit">Requerimientos</h2>
         <p>La version de PHP 8.0 o mayor. Antes de instalar la libreria se recomienda instalar <strong>composer</strong>.Este es un gestor 
             de librerias de PHP. Para saber sobre su instalación y requerimiento visite <a href="https://getcomposer.org/">Composer</a> 
 
         </p>
-        <h4>Instalación</h4>
+        <h2 class ="tit">Instalación</h2>
         <p>
             Una vez instalado composer , puede corroborarlo al ingresar a la terminal e ingresar <strong>composer -v</strong>.
             Abra el editor de codigo con el cual trabaje y dirigase al directorio raiz del proyecto.<br><br>
-            <img src="../imagenes/Sin título.png" width="300px" height="80px"> 
+            <img src="../imagenes/Sin título.png" width="900px" height="240px"> 
             <br><br>
             Para instalar la libreria escriba: <strong> composer require phpoffice/phpspreadsheet </strong><br>
             Se descargar una carpeta <strong>vendor</strong> donde se almacenará la libreria.  
         </p>
 
-        <h4>Hello World</h4>
+        <h2 class ="tit">Hello World</h2>
         <img src="../imagenes/ejemplo.png"><br><br>
-        Como se puede ver en el ejemplo lo primero que debemos hacer empezar a usar la libreria es llamar al script vendor 
+        <p>Como se puede ver en el ejemplo lo primero que debemos hacer empezar a usar la libreria es llamar al script vendor 
         y con <strong>use</strong> llamamos las distintas clases para usar los metodos correspondientes. Por ejemplo la clase 
         <strong>Spreadsheet</strong> se utiliza para crear un objeto y llamar al metodo <strong>getActiveSheet()</strong> para activar 
         la escritura o lectura del archivo. El metodo <strong> set </strong>, escribimos en el archivo y el objeto <strong>writer</strong>, 
         la usamos para guardar los cambios escritos. 
+        </p>
     </section>
 </div>
-<div class="container">
+<div class="container mt-3">
     <section>     
-        <h3>Clases Escritor y Lector de archivos</h3>
+        <h2 class ="tit">Clases Escritor y Lector de archivos</h2>
         <p>
         Para escribir o leer un archivo se usan las clases IWriter e IReader.<br>
         <code>\PhpOffice\PhpSpreadsheet\Reader\IReader</code><br>
@@ -55,7 +57,7 @@ include_once("header.php");
     </section>
 
     <div class="container">
-        <h3>Clases "Hoja" y "Hoja de calculo"</h3>
+        <h3 class ="tit">Clases "Hoja" y "Hoja de calculo"</h3>
         <p>La instancia de clase Spreadsheet (Hoja de calculo) es el objeto principal que contiene los otros objetos.<br>
         <code>$SP = new Spreadsheet();</code><br>
         Para crear una instancia de clase Worksheet (Hoja o solapa):<br>
@@ -69,12 +71,13 @@ include_once("header.php");
         </p>
     </div>
     <div class="container">
-        <h3>Acceder a las celdas</h3>
+        <h3 class ="tit">Acceder a las celdas</h3>
         <p>
 
         </p>
     </div>
           
+</div>
 </div>
         
 <?php
