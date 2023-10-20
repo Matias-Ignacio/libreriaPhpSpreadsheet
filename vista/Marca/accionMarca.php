@@ -35,10 +35,16 @@
             $activeWorksheet = bodyHC($listaObj, $activeWorksheet, $dimension);
             writeHC($spreadsheet);
             $resp=true;
-            echo "<h3>Hecho</h3>";
-            echo "<a href='../../Archivos/Relojes.xlsx'>Descarga Excel</a>";          
+            echo "<h3>Hecho</h3><br>";
+            echo "<a href='../../Archivos/Relojes.xlsx'>Descarga Excel</a><br>";          
         }
-
+        if($datos['accion']=='Exportar todo'){
+            general($spreadsheet);
+            writeHC($spreadsheet);
+            $resp=true;
+            echo "<h3>Hecho</h3><br>";
+            echo "<a href='../../Archivos/Relojes.xlsx'>Descarga Excel</a><br>"; 
+        }
 
         if($resp){
             $mensaje="La accion ".$datos['accion']."  se realizao correctamente " ;

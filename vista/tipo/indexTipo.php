@@ -31,6 +31,7 @@ $listaTipo = $objAbmTipo->buscar(null);
   </form>
   <form action="accionTipo.php" method="post">
             <br><input type="submit" name="accion" id="creaHC" value="Exportar Excel" class="btn btn-dark">
+            <input type="submit" name="accion" id="creaHC" value="Exportar todo" class="btn btn-dark">
   </form>
 </div>
 

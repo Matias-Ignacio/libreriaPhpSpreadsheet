@@ -32,7 +32,9 @@ $listaMarca = $objAbmMarca->buscar(null);
   </form>
   <form action="accionMarca.php" method="post">
             <input type="submit" name="accion" id="creaHC" value="Exportar Excel" class="btn btn-dark">
+            <input type="submit" name="accion" id="creaHC" value="Exportar todo" class="btn btn-dark">
   </form>
+
 </div>
 
 <?php

@@ -17,13 +17,11 @@ $spreadsheet
 ->setDescription('Excel generado como demostración')
 ->setKeywords('PHPSpreadsheet')
 ->setCategory('Categoría Excel');
+
+
 $activeWorksheet = $spreadsheet->getActiveSheet();
 $activeWorksheet->setTitle($hoja);
-//Crea una nueva hoja con el nombre pasado por la variable $hoja
-//$myWorkSheet = new PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($spreadsheet, $hoja);
-//$spreadsheet->addSheet($myWorkSheet, 0);
-//Activa la hoja por el nombre
-//$activeWorksheet = $spreadsheet->setActiveSheetIndexByName($hoja);  
+
 
 
 
@@ -109,5 +107,48 @@ function writeHC($spreadsheet){
     //$write =PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet,"Xlsx");
     $writer = new Xlsx($spreadsheet);
     $writer->save('../../Archivos/Relojes.xlsx');
+
+}
+
+/**
+ * @param Spreadsheet
+ */
+function general($SP){
+    //Crea una nueva hoja con el nombre pasado por la variable $hoja
+    $WS = new PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($SP, 'Relojes');
+    $SP->addSheet($WS, 0);
+    $WS = new PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($SP, 'Tipos');
+    $SP->addSheet($WS, 1);
+    $WS = new PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($SP, 'Marcas');
+    $SP->addSheet($WS, 2);
+    $WS = new PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($SP, 'Ventas');
+    $SP->addSheet($WS, 3);
+//Activa la hoja por el nombre, Relojes
+    $objReloj=new AbmReloj();
+    $listaObjReloj = $objReloj->buscar(null);
+    $WS = $SP->setActiveSheetIndexByName('Relojes');  
+    $arreglo_titulos = ["ID", "Reloj", "Precio", "Tipo", "Marca"];
+    $dimension = "B2:F2";
+    $WS = headHC($arreglo_titulos, $WS, $dimension);
+    $dimension = "B3:F";
+    $WS = bodyHC($listaObjReloj, $WS, $dimension);
+//Activa la hoja por el nombre, Tipos
+    $objTipo=new AbmTipo();
+    $listaObjTipo = $objTipo->buscar(null);
+    $WS = $SP->setActiveSheetIndexByName('Tipos'); 
+    $arreglo_titulos = ["ID", "Tipo"];
+    $dimension = "B2:C2";
+    $WS = headHC($arreglo_titulos, $WS, $dimension);
+    $dimension = "B3:C";
+    $WS = bodyHC($listaObjTipo, $WS, $dimension);
+    //Activa la hoja por el nombre, Marcas
+    $objMarca=new AbmMarca();
+    $listaObjMarca = $objMarca->buscar(null);
+    $WS = $SP->setActiveSheetIndexByName('Marcas'); 
+    $arreglo_titulos = ["ID", "Marca"];
+    $dimension = "B2:C2";
+    $WS = headHC($arreglo_titulos, $WS,$dimension);
+    $dimension = "B3:C";
+    $WS = bodyHC($listaObjMarca, $WS, $dimension);
 
 }
