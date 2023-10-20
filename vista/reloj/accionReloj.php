@@ -8,6 +8,7 @@
     $resp=false; 
     $objReloj=new AbmReloj();
     $listaObj = $objReloj->buscar(null);
+    $datos=data_submitted();
     
     if(isset($datos['accion'])){
         if(($datos['accion']=='Cambiar')){
@@ -62,10 +63,14 @@
             $mensaje="La accion ".$datos['accion']."  se realizao correctamente " ;
         }
         else{
+            //echo("mensaje error");
             $mensaje="Hubo un problema con la accion ".$datos['accion']." ";
             
         }
+
     }// fin if
+
+    
 ?>
 
 <div class="container">

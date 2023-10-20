@@ -1,54 +1,38 @@
 <?php
-    include_once '../estructura/header.php';
-    include_once '../../vendor/autoload.php';
-    include_once 'funciones.php';
-    include_once '../../configuracion.php';
+include_once '../estructura/header.php';
+include_once '../../vendor/autoload.php';
+include_once 'funciones.php';
+include_once '../../configuracion.php';
 
-    $resp=false; 
-    $objReloj=new AbmReloj();
-    $datos=data_submitted();
-    $nroModificados=intval($datos["cantM"]);
-    $nroSinModificar=intval($datos["cantSM"]);
-    $nroNuevos=intval($datos["cantN"]);
-    $id=$datos["indices"];
-    var_dump($id);
-    $resp=false;
+$resp=false; 
+$objReloj=new AbmReloj();
+$datos=data_submitted();
+$nroModificados=intval($datos["cantM"]);
+$nroSinModificar=intval($datos["cantSM"]);
+$nroNuevos=intval($datos["cantN"]);
+$id=$datos["indices"];
+var_dump($datos["nombre"]);
+$resp=false;
 
-    for($i=0;$i<count($datos["indices"]);$i++){
-            if($i<$nroNuevos){
-                // LLAMA AL INSERTAR 
-                if($datos["accion2"]=="Nuevo"){
-                    
-                        $datos[$i]["idReloj"] = intval($datos[$i]["idReloj"]);
-                        $datos[$i]["idMarca"] = intval($datos[$i]["idMarca"]); 
-                        $datos[$i]["idTipo"] = intval($datos[$i]["idTipo"]);
-                        $datos[$i]["precio"] = floatval($datos[$i]["precio"]);
-                        if($objReloj->alta($datos[$i])){
-                            $resp=true;
-
-                        }// fin if 
-
-                }// fin if 
-
+for($i=0;$i<count($id);$i++){
+    if($i<$nroNuevos){
+        $datosEnviar["nombreReloj"]=$datos["nombre"][$i];
+        $datosEnviar["precio"]=$datos["precio"][$i];
+        $datosEnviar["idReloj"]=$datos["id"][$i];
+        $datosEnviar["idTipo"]=$datos["idTipo"][$i];
+        $datosEnviar["idMarca"]=$datos["idMarca"][$i];
+        if($datos["accion1"]=="Cambiar"){
+            if($objReloj->alta($datosEnviar)){
+                $resp=true;
             }// fin if 
 
-        }// fin if  nuevo
+        }// fin if 
+    }// fin if 
 
-        // LLAMA AL MODIFICACION 
-        if($nroNuevos<=$i && $i<($nroModificados+$nroNuevos+$nroSinModificar)){
-            if($datos["accion1"]=="Cambiar"){
+    
+}// fin for
 
-                $datos[$i]["idReloj"] = intval($datos[$i]["idReloj"]);
-                $datos[$i]["idMarca"] = intval($datos[$i]["idMarca"]); 
-                $datos[$i]["idTipo"] = intval($datos[$i]["idTipo"]);
-                $datos[$i]["precio"] = floatval($datos[$i]["precio"]);
-                if($objReloj->modificacion($datos[$i])){
-                    $reso=true;
-                }// fin if 
 
-            }// fin if 
-        }// fin if modificados
-    }
 
 
 if($resp){

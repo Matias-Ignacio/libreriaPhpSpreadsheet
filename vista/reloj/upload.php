@@ -21,9 +21,6 @@ else {
 } // fin else
 
 
-//$spreadsheet->getActiveSheet()->getStyle('B2')->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED);
-//$data=$spreadsheet->getActiveSheet()->toArray();
-//var_dump(json_encode($data));
 ?>
 <div class="container mb-5 mt-5">
         <table>
