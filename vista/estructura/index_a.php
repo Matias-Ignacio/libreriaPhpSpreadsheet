@@ -73,6 +73,9 @@ include_once("header.php");
     <div class="container">
         <h3 class ="tit">Acceder a las celdas</h3>
         <p>
+            Para acceder a las celdas con el objeto <code>$spreadsheet</code>, activamos la hoja de calculo con <strong><code>getActiveSheet</code></strong>  
+            y llamamos al metodo <strong><code>SetCellValue</code></strong>
+            <img src="../imagenes/metodoSet.PNG" width=""  height="">
 
         </p>
     </div>

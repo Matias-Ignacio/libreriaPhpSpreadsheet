@@ -14,11 +14,11 @@
     var_dump($id);
     $resp=false;
     
-    for($i=0;$i<count($datos["indices"]);$i++){
-        if($i<$nroNuevos){
+for($i=0;$i<count($datos["indices"]);$i++){ 
+    if($i<$nroNuevos){
             // LLAMA AL INSERTAR 
             if($datos["accion2"]=="Nuevo"){
-                if(($datos['accion2']=='Cambiar')){
+                
                     $datos[$i]["idReloj"] = intval($datos[$i]["idReloj"]);
                     $datos[$i]["idMarca"] = intval($datos[$i]["idMarca"]); 
                     $datos[$i]["idTipo"] = intval($datos[$i]["idTipo"]);
@@ -33,8 +33,11 @@
         }// fin if 
 
     }// fin if  nuevo
-    if($nroNuevos<=$i && $i<($nroModificados+$nroNuevos)){
+
+    // LLAMA AL MODIFICACION 
+    if($nroNuevos<=$i && $i<($nroModificados+$nroNuevos+$nroSinModificar)){
         if($datos["accion1"]=="Cambiar"){
+
             $datos[$i]["idReloj"] = intval($datos[$i]["idReloj"]);
             $datos[$i]["idMarca"] = intval($datos[$i]["idMarca"]); 
             $datos[$i]["idTipo"] = intval($datos[$i]["idTipo"]);
@@ -46,6 +49,7 @@
         }// fin if 
     }// fin if modificados 
 }// fin for  
+
 
 if($resp){
         $mensaje="Las acciones ".$datos["accion1"]." y ".$datos["accion2"]." se realizaron correctamente";
