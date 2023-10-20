@@ -92,7 +92,7 @@ class Venta{
     public function cargar(){
         $resp=false; 
        $base=new BaseDatos("Relojes");
-       $sql="SELECT * FROM Venta WHERE idVenta='".$this->getidVenta()."'";
+       $sql="SELECT * FROM venta WHERE idVenta='".$this->getidVenta()."'";
        if($base->Iniciar()){
         $res=$base->Ejecutar($sql);
         if($res>-1){
@@ -125,7 +125,7 @@ class Venta{
     public function insertar(){
         $resp=false;
         $base=new BaseDatos("Relojes");
-        $sql="INSERT INTO Venta(idVenta,fecha,cantidad,idReloj,importe) VALUES('".$this->getidVenta()."','".$this->getfecha()."',
+        $sql="INSERT INTO venta(idVenta,fecha,cantidad,idReloj,importe) VALUES('".$this->getidVenta()."','".$this->getfecha()."',
         '".$this->getcantidad()."','".$this->getobjReloj()->getidReloj()."','".$this->getimporte()."');";
         if($base->Iniciar()){
             if($elid=$base->Ejecutar($sql)){
@@ -153,7 +153,7 @@ class Venta{
     public function modificar(){
         $res=false;
         $base=new BaseDatos("Relojes");
-        $sql="UPDATE Venta SET fecha='".$this->getfecha()."', idReloj='".$this->getobjReloj()->getidReloj()."', cantidad='".$this->getcantidad()."'
+        $sql="UPDATE venta SET fecha='".$this->getfecha()."', idReloj='".$this->getobjReloj()->getidReloj()."', cantidad='".$this->getcantidad()."'
         , importe='".$this->getimporte()."' WHERE idVenta='".$this->getidVenta()."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
@@ -179,7 +179,7 @@ class Venta{
     public function eliminar(){
         $res=false; 
         $base=new BaseDatos("Relojes");
-        $sql="DELETE FROM Venta WHERE idVenta='".$this->getidVenta()."'";
+        $sql="DELETE FROM venta WHERE idVenta='".$this->getidVenta()."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $res=true;
@@ -203,7 +203,7 @@ class Venta{
         $arreglo=array ();
         $base=new BaseDatos("Relojes");
         
-        $sql="SELECT * FROM Venta";
+        $sql="SELECT * FROM venta";
         if($parametro!=""){
             $sql.=' WHERE '.$parametro;
             

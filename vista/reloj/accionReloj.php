@@ -5,6 +5,7 @@
     $hoja = "Relojes";
     include '../funciones/crearHC.php';
 
+<<<<<<< HEAD
 
     $datoss =data_submitted();
     $datos = $datoss;
@@ -13,6 +14,8 @@
     $objReloj=new AbmReloj();
     $listaObj = $objReloj->buscar(null);
 
+=======
+>>>>>>> 39d56d55c2737517b9667e5b79447bd303cdc75c
     $datos =data_submitted();
     
     $resp=false; 
@@ -51,13 +54,24 @@
         }// fin if
         if($datos['accion']=='Exportar Excel'){
             $arreglo_titulos = ["ID", "Reloj", "Precio", "Tipo", "Marca"];
-            $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet);
-            $activeWorksheet = bodyHC($listaObj, $activeWorksheet);
+            $dimension = "B2:F2";
+            $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet, $dimension);
+            $dimension = "B3:F";
+            $activeWorksheet = bodyHC($listaObj, $activeWorksheet, $dimension);
             writeHC($spreadsheet);
             $resp=true;
-            echo "<h3>Hecho</h3>";
-            echo "<a href='../../Archivos/Relojes.xlsx'>Descarga Excel</a>";       
+            echo "<h3>Hecho</h3><br>";
+            echo "<a href='../../Archivos/Relojes.xlsx'>Descarga Excel</a><br>";       
         }
+
+        if($datos['accion']=='Exportar todo'){
+            general($spreadsheet);
+            writeHC($spreadsheet);
+            $resp=true;
+            echo "<h3>Hecho</h3><br>";
+            echo "<a href='../../Archivos/Relojes.xlsx'>Descarga Excel</a><br>"; 
+        }
+
         if($resp){
             $mensaje="La accion ".$datos['accion']."  se realizao correctamente " ;
         }

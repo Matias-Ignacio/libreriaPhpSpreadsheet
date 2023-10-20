@@ -1,5 +1,6 @@
 <?php
     include_once '../../configuracion.php';
+    $Titulo = "Ventas";
     $hoja = "Ventas";
     include_once '../estructura/header.php';
     include '../funciones/crearHC.php';
@@ -26,9 +27,11 @@
             }// fin if 
         }// fin if
         if($datos['accion']=='Exportar Excel'){
-            $arreglo_titulos = ["ID", "Fecha", "Reloj", "Cantidad", "Importe"];
-            $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet);
-            $activeWorksheet = bodyHC($listaObj, $activeWorksheet);
+            $arreglo_titulos = ["ID", "Fecha", "Reloj", "Cantidad", "Precio", "Importe"];
+            $dimension = "B2:G2";
+            $activeWorksheet = headHC($arreglo_titulos, $activeWorksheet, $dimension);
+            $dimension = "B3:G";
+            $activeWorksheet = ventaHC($listaObj, $activeWorksheet, $dimension);
             writeHC($spreadsheet);
             $resp=true;
             echo "<h3>Hecho</h3>";
