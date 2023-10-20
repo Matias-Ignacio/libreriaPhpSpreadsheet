@@ -15,9 +15,11 @@
             $datos["idMarca"] = intval($datos["idMarca"]); 
             $datos["idTipo"] = intval($datos["idTipo"]);
             $datos["precio"] = floatval($datos["precio"]);
+<<<<<<< HEAD
             var_dump($datos);
+=======
+>>>>>>> e6c65f1e68cf10ce930350de27b3955d12503ea2
             if($objReloj->modificacion($datos)){
-                //echo(" paso la modificacion  <br>");
                 $resp=true; 
             }// fin if 
         }// fin if

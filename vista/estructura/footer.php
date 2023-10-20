@@ -25,7 +25,5 @@
             <div class="col">Juan Pablo Urra</div>
         </div>
     </div>
-
 </footer>
-
 </html>
