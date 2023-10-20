@@ -5,19 +5,8 @@
     $hoja = "Relojes";
     include '../funciones/crearHC.php';
 
-<<<<<<< HEAD
-
-    $datoss =data_submitted();
-    $datos = $datoss;
-
-    $resp=false; 
-    $objReloj=new AbmReloj();
-    $listaObj = $objReloj->buscar(null);
-
-=======
->>>>>>> 39d56d55c2737517b9667e5b79447bd303cdc75c
     $datos =data_submitted();
-    
+    //var_dump($datos);
     $resp=false; 
     $objReloj=new AbmReloj();
     $listaObj = $objReloj->buscar(null);
