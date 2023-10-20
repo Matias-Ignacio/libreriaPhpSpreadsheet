@@ -22,8 +22,9 @@ if(isset($datos['idVenta'])){
             <label for="fecha" style="width:100px">Fecha</label>
             <input type="text" name="fecha" id="fecha" value="<?php echo($obj->getfecha()) ?>"><br>
 
+            
             <label for="reloj" style="width:100px">Reloj</label>
-            <input type="text" name="reloj" id="reloj" value="<?php echo($obj->getobjReloj()->getnombreReloj()) ?>"><br>
+            <input readonly type="text" name="idReloj" id="idReloj" value="<?php echo($obj->getobjReloj()->getidReloj()) ?>"><br>
             <label for="cantidad" style="width:100px">Cantidad</label>
             <input type="text" name="cantidad" id="cantidad" value="<?php echo($obj->getcantidad()) ?>"><br>    
 

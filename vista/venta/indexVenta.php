@@ -14,6 +14,7 @@ $listaObj = $objAbm->buscar(null);
         <tr>
             <th style="width:20%">Id</th>
             <th style="width:20%">Fecha</th>
+            <th style="width:20%">ID Reloj</th>
             <th style="width:20%">Reloj</th>
             <th style="width:20%">Precio</th>
             <th style="width:20%">Cantidad</th>
@@ -26,6 +27,7 @@ $listaObj = $objAbm->buscar(null);
                     <tr>
                     <td> <?php echo($obj->getidVenta()) ?> </td>
                     <td> <?php echo($obj->getfecha())?></td>
+                    <td> <?php echo($obj->getobjReloj()->getidReloj())?></td>
                     <td> <?php echo($obj->getobjReloj()->getnombreReloj())?></td>
                     <td> <?php echo($obj->getobjReloj()->getprecio())?></td>
                     <td> <?php echo($obj->getcantidad())?></td>

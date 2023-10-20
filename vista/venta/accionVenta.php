@@ -9,9 +9,14 @@
     $resp=false; 
     $obj=new AbmVenta();
     $listaObj = $obj->buscar(null);
-
+    //var_dump($datos);
     if(isset($datos['accion'])){
         if(($datos['accion']=='Cambiar')){
+            $datos["idVenta"] = intval($datos["idVenta"]); 
+            $datos["fecha"] = date($datos["fecha"]);
+            $datos["idReloj"] = intval($datos["idReloj"]);
+            $datos["cantidad"] = intval($datos["cantidad"]);
+            $datos["importe"] = floatval($datos["importe"]);
             if($obj->modificacion($datos)){
                 $resp=true; 
             }// fin if 
