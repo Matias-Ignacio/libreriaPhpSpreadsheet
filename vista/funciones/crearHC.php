@@ -73,7 +73,33 @@ function bodyHC($lista, $WP, $dimension){  //Pasaba $array
     return $WP;
 }
 
+/**
+ * llenado del cuerpo de la hoja de calculo
+ * @param array 
+ * @param Worksheet         //clase hoja
+ * @return Worksheet        //clase hoja
+ */
+function ventaHC($lista, $WP, $dimension){  //Pasaba $array
+    $fila = 3;
+    $columna = 2;
+    foreach ($lista as $key1 => $obj) {
+        $arregloDatoObjeto = $obj->getDatos();
+        $largo = $fila + $key1;
+        foreach ($arregloDatoObjeto as $key => $datObj) { 
+            $WP->setCellValueByColumnAndRow($columna+$key, $fila+$key1, $datObj);
+        }
 
+        $WP->setCellValueByColumnAndRow($columna+$key, $fila+$key1, $obj->getobjReloj()->getprecio());
+        $formula = "= E".$fila+$key1." * F".$fila+$key1;
+        $WP->setCellValueByColumnAndRow($columna+$key+1, $fila+$key1, $formula);
+        $formula = "= G".$fila+$key1."* 1.21";
+        
+        $WP->setCellValueByColumnAndRow($columna+$key+2, $fila+$key1, $formula);
+    }    
+    $dimension = $dimension . $largo;
+    $WP->getStyle($dimension)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    return $WP;
+}
 
 /**
  * Escribir en el archivo de hoja de calculo
@@ -81,15 +107,7 @@ function bodyHC($lista, $WP, $dimension){  //Pasaba $array
  */
 function writeHC($spreadsheet){
     //$write =PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet,"Xlsx");
-    //$write->save("grupo5.xlsx");
     $writer = new Xlsx($spreadsheet);
     $writer->save('../../Archivos/Relojes.xlsx');
-    /*$fileName="Descarga_excel_Reloj.xlsx";
-    # Crear un "escritor"
-    //$writer = new Xlsx($spreadsheet);
-    # Le pasamos la ruta de guardado
-    
-    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment; filename="'. urlencode($fileName).'"');
-    $writer->save('php://output');*/
+
 }
