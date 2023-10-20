@@ -121,6 +121,7 @@ class BaseDatos extends PDO {
         // se desea UPDATE o DELETE ? 
         if ( stristr($sql,"update")OR stristr($sql,"delete")){
                 $resp =  $this->EjecutarDeleteUpdate($sql);
+                //var_dump($resp);
         }
         
         // se desea ejecutar un select
@@ -159,12 +160,14 @@ class BaseDatos extends PDO {
    private function EjecutarDeleteUpdate($sql){
        $cantFilas =-1;
        $resultado=parent::query($sql);
+       //var_dump($resultado);
        if(!$resultado){
            $this->analizarDebug();
        }else{
            $cantFilas =  $resultado->rowCount();
            
        }
+       //var_dump($cantFilas);
        return $cantFilas;
        
    }

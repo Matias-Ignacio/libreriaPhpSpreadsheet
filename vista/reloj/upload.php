@@ -20,15 +20,9 @@ else {
     echo ('<div class="alert alert-danger">Verifique seleccionar un archivo y que la extension sea (xls o xlsx) </div>');
 } // fin else
 //$spreadsheet->getActiveSheet()->getStyle('B2')->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED);
-$data=$spreadsheet->getActiveSheet()->toArray();
-var_dump(json_encode($data));
+//$data=$spreadsheet->getActiveSheet()->toArray();
+//var_dump(json_encode($data));
 ?>
-<?php
-$indicesModificados = [];
-$indicesNuevos = [];
-$indicesSinModificar = [];
-?>
-
 <div class="container mb-5 mt-5">
    
         <form action="accionReloj.php" method="POST">
@@ -77,7 +71,7 @@ $indicesSinModificar = [];
                         <td><input style="background-color:#ff0000" type="text" name="idTipo" id="idTipo" readonly value="<?php echo ($datosExcel[$id[$i] - 1]["idTipo"]) ?>"></td>
                         <td><input style="background-color:#ff0000" type="text" name="idMarca" id="idMarca" readonly value="<?php echo ($datosExcel[$id[$i] - 1]["idMarca"]) ?>"></td>
                         <td><input style="background-color:#ff0000" type="hidden" name="accion" id="accion" value="alta"></td>
-                        <td><input type="hidden" name="accion" id="accion" value="Editar"></td>
+                        <td><input type="hidden" name="accion" id="accion" value="Cambiar"></td>
                     </tr>
                 <?php
                
@@ -92,7 +86,7 @@ $indicesSinModificar = [];
                         <td><input style="background-color:#3cb371" type="text" name="idTipo" id="idTipo" readonly value="<?php echo ($datosExcel[$id[$i] - 1]["idTipo"]) ?>"></td>
                         <td><input style="background-color:#3cb371" type="text" name="idMarca" id="idMarca" readonly value="<?php echo ($datosExcel[$id[$i] - 1]["idMarca"]) ?>"></td>
                         <td><input style="background-color:#3cb371" type="hidden" name="accion" id="accion" value="alta"></td>
-                        <td><input type="hidden" name="accion" id="accion" value="Editar"></td>
+                        <td><input type="hidden" name="accion" id="accion" value="Cambiar"></td>
                     </tr>
                 <?php
                
@@ -109,13 +103,10 @@ $indicesSinModificar = [];
 
         <?php
         ?>
-
+  
         <td>Datos Modificados: <input type="color" value="#ff0000"></td>
         <td>Datos Nuevo: <input type="color" value="#0000ff"></td>
         <td>Datos Sin Modificar: <input type="color" value="#3cb371"></td>
-
- 
-    
 
 </div>
 <a href="indexReloj.php" class="btn btn-secondary">Volver</a>

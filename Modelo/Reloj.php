@@ -163,10 +163,14 @@ class Reloj{
     public function modificar(){
         $res=false;
         $base=new BaseDatos("relojes");
-        $sql="UPDATE reloj SET nombreReloj='".$this->getnombreReloj()."', precio='".$this->getprecio()."'
-        , idTipo='".$this->getobjTipo()->getidTipo()."', idMarca='".$this->getobjMarca()->getidMarca()."' WHERE idReloj='".$this->getidReloj()."'";
+        $sql="UPDATE reloj SET nombreReloj='".$this->getnombreReloj()."', precio=".$this->getprecio()."
+        , idTipo=".$this->getobjTipo()->getidTipo().", idMarca=".$this->getobjMarca()->getidMarca()." WHERE idReloj=".$this->getidReloj()."";
+       // echo("<br>");
+        var_dump($sql);
         if($base->Iniciar()){
+          //  echo("<br> paso el iniciar <br>");
             if($base->Ejecutar($sql)){
+               // echo("<br> paso el ejecutar <br>");
                 $res=true;
             }
             else{

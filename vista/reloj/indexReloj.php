@@ -39,9 +39,12 @@ $listaReloj = $objAbmReloj->buscar(null);
   <form action="accionReloj.php" method="post">
             <br><input type="submit" name="accion" id="creaHC" value="Exportar Excel" class="btn btn-dark">
   </form>
+
+  <button id="cargarExcel" class="btn btn-dark mt-3" ><a href="cargarExcel.php">Cargar Excel </a></button>
 </div>
 
 
+<script src="../js/funciones.js"></script>
 <?php
 include_once("../estructura/footer.php");
 ?>

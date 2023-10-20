@@ -12,7 +12,8 @@
            
         if( array_key_exists('idReloj',$param) and array_key_exists('nombreReloj',$param) and 
         array_key_exists('precio',$param) and array_key_exists('idTipo',$param) and 
-        array_key_exists('idMarca',$param) and array_key_exists('precio',$param) ){
+        array_key_exists('idMarca',$param) ){
+            //echo("paso array_keys_exist <br>");
             $obj = new Reloj(); 
             $objTipo = new Tipo();
             $objTipo->setidTipo($param['idTipo']);
@@ -21,6 +22,7 @@
             $obj->setear($param["idReloj"],$param["nombreReloj"],$param["precio"],$objTipo,$objMarca);
 
         }
+        //var_dump($obj);
         return $obj;
     }// fin cargarObjeto
 
@@ -99,8 +101,10 @@
      */
     public function modificacion($param){
         $resp = false;
+        //var_dump($param);
         if ($this->seteadosCamposClaves($param)){
             $elObjReloj = $this->cargarObjeto($param);
+            //var_dump($elObjReloj->modificar());
             if($elObjReloj!=null and $elObjReloj->modificar()){
                 $resp = true;
             }
