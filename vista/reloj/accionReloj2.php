@@ -1,5 +1,5 @@
 <?php
-     include_once '../estructura/header.php';
+    include_once '../estructura/header.php';
     include_once '../../vendor/autoload.php';
     include_once 'funciones.php';
     include_once '../../configuracion.php';
@@ -13,49 +13,49 @@
     $id=$datos["indices"];
     var_dump($id);
     $resp=false;
-    
-for($i=0;$i<count($datos["indices"]);$i++){ 
-    if($i<$nroNuevos){
-            // LLAMA AL INSERTAR 
-            if($datos["accion2"]=="Nuevo"){
-                
-                    $datos[$i]["idReloj"] = intval($datos[$i]["idReloj"]);
-                    $datos[$i]["idMarca"] = intval($datos[$i]["idMarca"]); 
-                    $datos[$i]["idTipo"] = intval($datos[$i]["idTipo"]);
-                    $datos[$i]["precio"] = floatval($datos[$i]["precio"]);
-                    if($objReloj->alta($datos[$i])){
-                        $resp=true;
 
-                    }// fin if 
+    for($i=0;$i<count($datos["indices"]);$i++){
+            if($i<$nroNuevos){
+                // LLAMA AL INSERTAR 
+                if($datos["accion2"]=="Nuevo"){
+                    
+                        $datos[$i]["idReloj"] = intval($datos[$i]["idReloj"]);
+                        $datos[$i]["idMarca"] = intval($datos[$i]["idMarca"]); 
+                        $datos[$i]["idTipo"] = intval($datos[$i]["idTipo"]);
+                        $datos[$i]["precio"] = floatval($datos[$i]["precio"]);
+                        if($objReloj->alta($datos[$i])){
+                            $resp=true;
+
+                        }// fin if 
+
+                }// fin if 
 
             }// fin if 
 
-        }// fin if 
+        }// fin if  nuevo
 
-    }// fin if  nuevo
+        // LLAMA AL MODIFICACION 
+        if($nroNuevos<=$i && $i<($nroModificados+$nroNuevos+$nroSinModificar)){
+            if($datos["accion1"]=="Cambiar"){
 
-    // LLAMA AL MODIFICACION 
-    if($nroNuevos<=$i && $i<($nroModificados+$nroNuevos+$nroSinModificar)){
-        if($datos["accion1"]=="Cambiar"){
+                $datos[$i]["idReloj"] = intval($datos[$i]["idReloj"]);
+                $datos[$i]["idMarca"] = intval($datos[$i]["idMarca"]); 
+                $datos[$i]["idTipo"] = intval($datos[$i]["idTipo"]);
+                $datos[$i]["precio"] = floatval($datos[$i]["precio"]);
+                if($objReloj->modificacion($datos[$i])){
+                    $reso=true;
+                }// fin if 
 
-            $datos[$i]["idReloj"] = intval($datos[$i]["idReloj"]);
-            $datos[$i]["idMarca"] = intval($datos[$i]["idMarca"]); 
-            $datos[$i]["idTipo"] = intval($datos[$i]["idTipo"]);
-            $datos[$i]["precio"] = floatval($datos[$i]["precio"]);
-            if($objReloj->modificacion($datos[$i])){
-                $reso=true;
             }// fin if 
-
-        }// fin if 
-    }// fin if modificados 
-}// fin for  
+        }// fin if modificados
+    }
 
 
 if($resp){
-        $mensaje="Las acciones ".$datos["accion1"]." y ".$datos["accion2"]." se realizaron correctamente";
+    $mensaje="Las acciones ".$datos["accion1"]." y ".$datos["accion2"]." se realizaron correctamente";
 }
 else{
-        $mensaje="Hubo problema con la accion ".$datos["accion1"]."  o con la accion ".$datos["accion2"];
+    $mensaje="Hubo problema con la accion ".$datos["accion1"]."  o con la accion ".$datos["accion2"];
             
 }
 

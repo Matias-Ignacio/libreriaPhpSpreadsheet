@@ -70,7 +70,7 @@
 
 <div class="container">
     <?php
-   // echo($mensaje);
+    echo($mensaje);
     ?>
 </div>
 <a href="indexReloj.php">Volver</a>

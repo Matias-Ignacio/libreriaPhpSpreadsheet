@@ -15,7 +15,7 @@ include_once("header.php");
             tambien otros tipos de archivo como CSV, SYLK, entre otros archivos.
         </p>
         <h2 class ="tit">Requerimientos</h2>
-        <p>La version de PHP 8.0 o mayor. Antes de instalar la libreria se recomienda instalar <strong>composer</strong>.Este es un gestor 
+        <p>La version de PHP 8.0 o mayor. Antes de instalar la libreria se recomienda instalar <strong>composer</strong>. Este es un gestor 
             de librerias de PHP. Para saber sobre su instalación y requerimiento visite <a href="https://getcomposer.org/">Composer</a> 
 
         </p>
@@ -23,14 +23,14 @@ include_once("header.php");
         <p>
             Una vez instalado composer , puede corroborarlo al ingresar a la terminal e ingresar <strong>composer -v</strong>.
             Abra el editor de codigo con el cual trabaje y dirigase al directorio raiz del proyecto.<br><br>
-            <img src="../imagenes/Sin título.png" width="900px" height="240px"> 
+            <img src="../imagenes/Sin título.png" width="700px" height="200px"> 
             <br><br>
             Para instalar la libreria escriba: <strong> composer require phpoffice/phpspreadsheet </strong><br>
             Se descargar una carpeta <strong>vendor</strong> donde se almacenará la libreria.  
         </p>
 
         <h2 class ="tit">Hello World</h2>
-        <img src="../imagenes/ejemplo.png"><br><br>
+        <img src="../imagenes/ejemplo.png" width="800px" height="400px"><br><br>
         <p>Como se puede ver en el ejemplo lo primero que debemos hacer empezar a usar la libreria es llamar al script vendor 
         y con <strong>use</strong> llamamos las distintas clases para usar los metodos correspondientes. Por ejemplo la clase 
         <strong>Spreadsheet</strong> se utiliza para crear un objeto y llamar al metodo <strong>getActiveSheet()</strong> para activar 
@@ -52,6 +52,7 @@ include_once("header.php");
         Se crea el escritor del formato Xlsx<br>
         <code>$writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);</code><br>
         <code>$writer->save("05featuredemo.xlsx");</code><br>
+        
 
         </p>
     </section>
@@ -76,6 +77,17 @@ include_once("header.php");
             Para acceder a las celdas con el objeto <code>$spreadsheet</code>, activamos la hoja de calculo con <strong><code>getActiveSheet</code></strong>  
             y llamamos al metodo <strong><code>SetCellValue</code></strong>
             <img src="../imagenes/metodoSet.PNG" width=""  height="">
+        <p>Para acceder a los valores de las celdas de la plantilla<br>
+        <code>$dato = $WP->getCellValue('A1');</code><br>
+        Para escribir en un celdas, usando el metodo de la clase Worksheet<br>
+        <code>$WP->getCellValue('A1', $dato);</code><br>
+        O el metodo de la clase cell<br>
+        <code>$cell->setValue('Dato');</code><br>
+        Para escribir por coordenadas en vez de el nombre de la celda<br>
+        <code>$WP->setCellValueByColumnAndRow($columna, $fila, $dato);</code><br>
+        Tambien se puede usar un array para ingresar los datos a varias celdas.<br>
+        Para ingresar una formula en la celda, la cadena debe iniciar con el signo "=".<br>
+        <code>$spreadsheet->getActiveSheet()->setCellValue('A4','=IF(A3, CONCATENATE(A1, " ", A2))');</code><br>
 
         </p>
     </div>
